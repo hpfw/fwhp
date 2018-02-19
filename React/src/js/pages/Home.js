@@ -2,11 +2,16 @@ import React from "react";
 import style from '../style/style.css';
 import {connect} from "react-redux"
 import {termineFW} from "../actions/termine_fw_action"
+import {termineJF} from "../actions/termine_jf_action"
+import {aktuelles} from "../actions/aktuelles_action"
+import {kontakt} from "../actions/kontakt_action"
 
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 @connect((store) => {  return {
         new_termine_fw: store.termine_fw_red.termine,
+        new_termine_jf: store.termine_jf_red.termine,
+        new_aktuelles: store.aktuelles_red.aktuelles,
     };
 })
 
@@ -17,16 +22,35 @@ export class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+          name: "",
+          email: "",
+          comments: "",
         };
     }
 
     componentWillMount() {
-        this.props.dispatch(termineFW())
+        this.props.dispatch(termineFW());
+        this.props.dispatch(termineJF());
+        this.props.dispatch(aktuelles());
+    }
+
+    handleClick = (datei) => {
+      window.open('http://feuerwehr-waldburg.de/probeplan_' + datei + '.pdf');
+    }
+    handleChange = (e, { name, value }) => {
+      this.setState({ [name]: value })
+    }
+    handleSend = () => {
+      this.props.dispatch(kontakt(this.state.name, this.state.email, this.state.comments ));
+      this.setState({name: "", email: "", comments: ""})
     }
 
 
     render() {
-      const termine_fw = this.props.new_termine_fw
+      const termine_fw = this.props.new_termine_fw;
+      const termine_jf = this.props.new_termine_jf;
+      const aktuelles = this.props.new_aktuelles;
+      var {name, email, comments} = this.state
 
       return (
       <div id="home" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -86,11 +110,10 @@ export class Home extends React.Component {
           <h3>AKTUELLES</h3>
           <br/>
             <div class="col-sm-5 col-xs-12">
-              <p class="aktuelles"><em>Dünnes Eis birgt große Gefahr
-                Der Deutsche Feuerwehrverband (DFV) warnt vor dem Betreten nicht freigegebener Eisflächen: „Trotz der aktuellen Minusgrade sind viele Eisflächen zu dünn; es droht Einbruch“, erklärt DFV-Vizepräsident Hermann Schreck. Auch der vielfach in Deutschland herrschende Frost der vergangenen Tage garantiert nicht, dass die Eisdecke auf Seen oder Flüssen tragfähig ist. Besonders Kinder lassen sich vom glitzernden Eis zu unvorsichtigem Verhalten verleiten. „Betreten Sie nur freigegebene Eisflächen!“, mahnt Schreck. Für die Freigabe sind die örtlichen Behörden zuständig. </em></p>
+              <p class="aktuelles"><em>{ aktuelles.text } </em></p>
             </div>
             <div class="col-sm-7 col-xs-12">
-              <img src={require("../../images/waldburg1.jpg")} width="110%" height="110%"/>
+              <img src={require("../../images/" + aktuelles.bild)} width="110%" height="110%"/>
             </div>
           </div>
         </div>
@@ -114,7 +137,7 @@ export class Home extends React.Component {
                   <div class="panel-footer card-footer">
                     <h3>{termine_fw.tag}</h3>
                     <h3>{termine_fw.datum}</h3>
-                    <button class="btn">Zum Probeplan</button>
+                    <button class="btn" onClick={() => this.handleClick("aktiv")}>Zum Probeplan</button>
                   </div>
                 </div>
               </div>
@@ -122,16 +145,16 @@ export class Home extends React.Component {
                 <div class="panel panel-default card card-default text-center">
                   <div class="panel-heading card-heading">
                     <h1>Jugendfeuerwehr</h1>
-                  </div>
+                    </div>
                   <div class="panel-body card-body">
-                    <p><strong>Probeleiter:</strong> Rlaus</p>
-                    <p><strong>Probe:</strong> Alle</p>
-                    <p><strong>Uhrzeit:</strong> 18:30</p>
+                    <p><strong>Probeleiter:</strong> {termine_jf.leiter}</p>
+                    <p><strong>Probe:</strong> {termine_jf.probe} </p>
+                    <p><strong>Uhrzeit:</strong> {termine_jf.uhrzeit}</p>
                   </div>
                   <div class="panel-footer card-footer">
-                    <h3>Montag</h3>
-                    <h3>10.02.2018</h3>
-                    <button class="btn ">Zum Probeplan</button>
+                    <h3>{termine_jf.tag}</h3>
+                    <h3>{termine_jf.datum}</h3>
+                    <button class="btn" onClick={() => this.handleClick("jugend")}>Zum Probeplan</button>
                   </div>
                 </div>
               </div>
@@ -188,17 +211,17 @@ export class Home extends React.Component {
             <div class="col-md-8">
               <div class="row">
                 <div class="col-sm-6 form-group">
-                  <input class="form-control" id="name" name="name" placeholder="Name" type="text" required/>
+                  <input class="form-control" id="name" name="name" placeholder="Name" type="text" required value={name} onChange={this.handleChange}/>
                 </div>
                 <div class="col-sm-6 form-group">
-                  <input class="form-control" id="email" name="email" placeholder="Email" type="email" required/>
+                  <input class="form-control" id="email" name="email" placeholder="Email" type="email" required value={email} onChange={this.handleChange}/>
                 </div>
               </div>
-              <textarea class="form-control" id="comments" name="comments" placeholder="Nachricht" rows="5"></textarea>
+              <textarea class="form-control" id="comments" name="comments" placeholder="Nachricht" rows="5" value={comments} onChange={this.handleChange}></textarea>
               <br/>
                 <div class="row">
                   <div class="col-md-12 form-group">
-                    <button class="btn pull-right" type="submit">Senden</button>
+                    <button class="btn pull-right" type="submit" onClick={this.handleSend}>Senden</button>
                   </div>
                 </div>
             </div>

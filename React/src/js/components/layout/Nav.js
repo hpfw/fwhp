@@ -28,6 +28,7 @@ export default class Nav extends React.Component {
         element.scrollIntoView({block: "start", behavior: "smooth"});
     }
   }
+  
   handleDrowdown = (element) => {
       if (element != null) {
           this.setState({home: false, aktuelles: false, termine: false, contact: false, mehr: false})

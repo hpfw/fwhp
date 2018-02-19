@@ -8,11 +8,13 @@
   "dependencies": {
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
+    "dateformat": "^3.0.3",
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
     "express": "~4.15.2",
     "morgan": "~1.8.1",
     "mysql": "^2.15.0",
+    "nodemailer": "^4.4.2",
     "serve-favicon": "~2.4.2"
   }
 }

@@ -29,12 +29,13 @@
     "redux-promise-middleware": "^5.0.0",
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.20.1",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.16.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack": "^1.15.0"
+  },
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot"
+    "build": "webpack --config webpack.config.js"
   },
   "author": "",
   "license": "ISC"
