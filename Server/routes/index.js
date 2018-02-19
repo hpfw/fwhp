@@ -5,7 +5,7 @@ var app = require('.././app');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-        res.render('index', { title: 'Index' });
+        res.render('index');
 });
 
 module.exports = router;

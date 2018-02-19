@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var app = require('.././app');
 var mysql = require('mysql');
+var date = new Date()
 
 var con = mysql.createConnection({
     host: "localhost",
@@ -11,14 +12,15 @@ var con = mysql.createConnection({
     database: "feuerweh_"
 });
 
-/* GET home page. */
+
 router.get('/', function(req, res) {
     con.connect(function(err) {
         if (err) throw err;
-        con.query("SELECT * FROM termine_fw", function (err, result, fields) {
+        var datum = date.getFullYear() + "-0" + date.getMonth()+1 + "-" + date.getDate()
+        con.query("SELECT * FROM termine_fw WHERE datum > " + datum, function (err, result, fields) {
             if (err) throw err;
-            //console.log(result);
-            res.send(result[0].datum)
+            con.end();
+            res.send({datum: result[0].datum, uhrzeit: result[0].uhrzeit, probe: result[0].probe, leiter: result[0].leiter, tag: "Mittwoch"})
         });
     });
 

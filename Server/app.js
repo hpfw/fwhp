@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //var nodemailer = require('nodemailer');
 var index = require('./routes/index'); //für Login-Seite
-var termine = require('./routes/termine'); //für Login-Seite
+var termine_fw = require('./routes/termine_fw'); //für Login-Seite
 
 
 // view engine setup
@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Login als Startseite festlegen
 app.use('/', index);
-app.use('/termine', termine);
+app.use('/termine_fw', termine_fw);
 
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

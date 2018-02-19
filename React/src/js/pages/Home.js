@@ -6,7 +6,7 @@ import {termineFW} from "../actions/termine_fw_action"
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 @connect((store) => {  return {
-        termine_fw: store.termine_fw.termine_fw,
+        new_termine_fw: store.termine_fw_red.termine,
     };
 })
 
@@ -26,7 +26,7 @@ export class Home extends React.Component {
 
 
     render() {
-      const termine_fw = this.props.termine_fw
+      const termine_fw = this.props.new_termine_fw
 
       return (
       <div id="home" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -107,13 +107,13 @@ export class Home extends React.Component {
                     <h1>Aktive Feuerwehr</h1>
                   </div>
                   <div class="panel-body card-body">
-                    <p><strong>Probeleiter:</strong> {termine_fw}</p>
-                    <p><strong>Probe:</strong> {console.log(termine_fw)} </p>
-                    <p><strong>Uhrzeit:</strong> </p>
+                    <p><strong>Probeleiter:</strong> {termine_fw.leiter}</p>
+                    <p><strong>Probe:</strong> {termine_fw.probe} </p>
+                    <p><strong>Uhrzeit:</strong> {termine_fw.uhrzeit}</p>
                   </div>
                   <div class="panel-footer card-footer">
-                    <h3>Mittwoch</h3>
-                    <h3></h3>
+                    <h3>{termine_fw.tag}</h3>
+                    <h3>{termine_fw.datum}</h3>
                     <button class="btn">Zum Probeplan</button>
                   </div>
                 </div>

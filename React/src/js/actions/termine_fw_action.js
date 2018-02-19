@@ -33,22 +33,16 @@ export function termineFW() {
             .then(response => {
                 if (response.status >= 200 && response.status < 300) {
                     response.json().then(json => {
-                        console.log(json);
+                        //console.log(json);
                         dispatch(setTermineFW(json));
                     });
                 } else {
-                    response.json().then(json => {
                         dispatch(termineFWRejected('Error on fetching'));
-                        throw error;
-                    });
                 }
             })
             .catch(
                 error => {
-                    error.json().then(json => {
                         dispatch(termineFWRejected('Error on fetching'));
-                        throw error;
-                    });
                 }
             );
     };

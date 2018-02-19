@@ -1,9 +1,10 @@
 export default function reducer(state={    // reducer schaut Komponenten an, die mit ihm verbunden sind
-                                    termine_fw: {
+                                    termine: {
                                         probe: "",
                                         datum: "",
                                         uhrzeit: "",
                                         leiter: "",
+                                        tag: "",
                                     },
                                     fetching: false,
                                     fetched: false,
@@ -24,7 +25,7 @@ export default function reducer(state={    // reducer schaut Komponenten an, die
                 ...state,
                 fetching: false,   // fetching false: Fertig
                 fetched: true,     // fetched ist nun fertig
-                termine_fw: action.payload,
+                termine: action.payload,
             }
         }
     }
