@@ -31,9 +31,8 @@
     "style-loader": "^0.20.1",
     "webpack-dev-server": "^1.16.5"
   },
-  "devDependencies": {
-    "webpack": "^1.15.0"
-  },
+  "devDependencies": {},
+
   "scripts": {
     "build": "webpack --config webpack.config.js"
   },

@@ -26,6 +26,7 @@ h3, h4 {
 }
 .carousel-inner img {
     width: 100%; /* Set width to 100% */
+
     margin: auto;
 }
 .carousel-caption h3 {
@@ -154,17 +155,13 @@ textarea {
     resize: none;
 }
 
-
-
 .mouse_curser {
     cursor: pointer !important;
 }
+
 .aktuelles {
     text-align: justify;
 }
-
-
-
 
 .card-fluid {
     padding: 60px 50px;
@@ -175,14 +172,17 @@ textarea {
     border-radius:0 !important;
     transition: box-shadow 0.5s;
 }
+
 .card:hover {
     box-shadow: 5px 0px 40px rgba(0,0,0, .2);
 }
+
 .card-footer .btn:hover {
     border: 1px solid #2d2d30;
     background-color: #2d2d30 !important;
     color: #fff;
 }
+
 .card-heading {
     color: #fff !important;
     background-color: #2d2d30 !important;
@@ -193,22 +193,30 @@ textarea {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
+
 .card-footer {
     background-color: white !important;
 }
+
 .card-footer h3 {
     font-size: 32px;
 }
+
 .card-footer h4 {
     color: #aaa;
     font-size: 14px;
 }
+
 .card-footer .btn {
     margin: 15px 0;
     background-color: #ff0000;
     color: #fff;
 }
-.cardSlideanim {visibility:visible;}
+
+.cardSlideanim {
+    visibility:visible;
+}
+
 .cardSlide {
     animation-name: slide;
     -webkit-animation-name: slide;
@@ -216,6 +224,26 @@ textarea {
     -webkit-animation-duration: 1s;
     visibility: visible;
 }
+
+.parallax {
+    /* The image used */
+    background-image: url("../../images/waldburg1.jpg");
+
+    /* Set a specific height */
+    min-height: 350px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.divi {
+    background-color: blue; 
+    height: 300px;
+}
+
 @keyframes cardSlide {
     0% {
         opacity: 0;
