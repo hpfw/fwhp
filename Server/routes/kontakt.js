@@ -20,16 +20,16 @@ router.post('/', function(req, res) {
     
         // setup email data with unicode symbols
         let mailOptions = {
-            from: 'req.body.name '+ " <"+'req.body.email'+">", // sender address
-            to: 'info@feuerwehr-waldburg.com', // list of receivers
+            from: req.body.name + " - " + req.body.email +' <fwhp@web.de>', // sender address
+            to: 'info@feuerwehr-waldburg.de', // list of receivers
             subject: "Anfrage HP", // Subject line
-            text: 'req.body.comments', 
+            text: req.body.comments,
         };
     
         // send mail with defined transport object
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-     
+                console.log(error)
             }
         });
     });

@@ -29,11 +29,11 @@ export function kontakt(name, email, comments) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: {
+            body: JSON.stringify({
                 name: name,
                 email: email,
                 comments: comments,
-            }
+            })
         })
             .then(response => {
                 if (response.status >= 200 && response.status < 300) {

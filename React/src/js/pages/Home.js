@@ -37,8 +37,8 @@ export class Home extends React.Component {
     }
 
 
-    handleChange = (e, { name, value }) => {
-      this.setState({ [name]: value })
+    handleChange = (e, name) => {
+      this.setState({ [name]: e.target.value })
     }
 
 
@@ -161,43 +161,9 @@ export class Home extends React.Component {
                 </div>
               </div>
             </div>
-
-            <div class="parallax"></div>
-
-
-            <div class="modal fade" id="myModal" role="dialog">
-              <div class="modal-dialog">
-
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
-                  </div>
-                  <div class="modal-body">
-                    <form role="form">
-                      <div class="form-group">
-                        <label for="psw"><span class="glyphicon glyphicon-shopping-cart"></span> Tickets, $23 per person</label>
-                        <input type="number" class="form-control" id="psw" placeholder="How many?"/>
-                      </div>
-                      <div class="form-group">
-                        <label for="usrname"><span class="glyphicon glyphicon-user"></span> Send To</label>
-                        <input type="text" class="form-control" id="usrname" placeholder="Enter email"/>
-                      </div>
-                      <button type="submit" class="btn btn-block">Pay
-                        <span class="glyphicon glyphicon-ok"></span>
-                      </button>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
-                      <span class="glyphicon glyphicon-remove"></span> Cancel
-                    </button>
-                    <p>Need <a href="#">help?</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
+
+          <div class="parallax"></div>
 
           <div class="bg-1 black">
           <div id="contact" class="container">
@@ -215,13 +181,13 @@ export class Home extends React.Component {
               <div class="col-md-8">
                 <div class="row">
                   <div class="col-sm-6 form-group">
-                    <input class="form-control" id="name" name="name" placeholder="Name" type="text" required value={name} onChange={this.handleChange}/>
+                    <input class="form-control" id="name" name="name" placeholder="Name" type="text" required value={name} onChange={(e) => {this.handleChange(e, "name")}}/>
                   </div>
                   <div class="col-sm-6 form-group">
-                    <input class="form-control" id="email" name="email" placeholder="Email" type="email" required value={email} onChange={this.handleChange}/>
+                    <input class="form-control" id="email" name="email" placeholder="Email" type="email" required value={email} onChange={(e) => {this.handleChange(e, "email")}}/>
                   </div>
                 </div>
-                <textarea class="form-control" id="comments" name="comments" placeholder="Nachricht" rows="5" value={comments} onChange={this.handleChange}></textarea>
+                <textarea class="form-control" id="comments" name="comments" placeholder="Nachricht" rows="5" value={comments} onChange={(e) => {this.handleChange(e, "comments")}}></textarea>
                 <br/>
                   <div class="row">
                     <div class="col-md-12 form-group">

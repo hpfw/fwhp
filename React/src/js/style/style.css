@@ -239,11 +239,6 @@ textarea {
     background-size: cover;
 }
 
-.divi {
-    background-color: blue; 
-    height: 300px;
-}
-
 @keyframes cardSlide {
     0% {
         opacity: 0;
