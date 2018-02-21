@@ -22,6 +22,7 @@ export class Home extends React.Component {
           name: "",
           email: "",
           comments: "",
+          errorMsg: "",
         };
     }
 
@@ -43,8 +44,19 @@ export class Home extends React.Component {
 
 
     handleSend = () => {
-      this.props.dispatch(kontakt(this.state.name, this.state.email, this.state.comments ));
-      this.setState({name: "", email: "", comments: ""})
+      var {name, email, comments} = this.state;
+
+      if (name != '' && email != '' && comments != '') {
+        this.props.dispatch(kontakt(name, email, comments ));
+        this.setState({name: "", email: "", comments: ""});
+
+        document.getElementById("errorMsg").style.display = "none";
+        document.getElementById("successMsg").style.display = "inline";
+      } else {
+        document.getElementById("errorMsg").style.display = "inline";
+        document.getElementById("successMsg").style.display = "none";
+      }
+
     }
 
 
@@ -168,8 +180,18 @@ export class Home extends React.Component {
           <div class="bg-1 black">
           <div id="contact" class="container">
             <h3 class="text-center">KONTAKT</h3>
+           
+            <div id="errorMsg" class="error">
+              <div class="alert alert-danger">
+                <strong>Bitte alle Felder ausfüllen.</strong>
+              </div>
+            </div>
+            <div id="successMsg" class="success">
+              <div class="alert alert-success">
+                <strong>Ihre Nachricht wurde erfolgreich versandt.</strong>
+              </div>
+            </div>
             <br/>
-
             <div class="row">
               <div class="col-md-4">
                 <p>Interessiert?&nbsp;Schreiben Sie uns</p>
@@ -178,6 +200,7 @@ export class Home extends React.Component {
                 <p><span class="glyphicon glyphicon-phone"></span> &nbsp;Telefon: 07529/112</p>
                 <p><span class="glyphicon glyphicon-envelope"></span> &nbsp;Email: info@Feuerwehr-Waldburg.de</p>
               </div>
+
               <div class="col-md-8">
                 <div class="row">
                   <div class="col-sm-6 form-group">
@@ -191,7 +214,7 @@ export class Home extends React.Component {
                 <br/>
                   <div class="row">
                     <div class="col-md-12 form-group">
-                      <button class="btn pull-right" type="submit" onClick={this.handleSend}>Senden</button>
+                      <button class="btn pull-right" onClick={this.handleSend}>Senden</button>
                     </div>
                   </div>
               </div>

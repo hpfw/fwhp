@@ -10,7 +10,7 @@ var termine_fw = require('./routes/termine_fw');
 var termine_jf = require('./routes/termine_jf');
 var aktuelles = require('./routes/aktuelles');
 var kontakt = require('./routes/kontakt');
-
+var einsaetze = require('./routes/einsaetze');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,6 +35,7 @@ app.use('/termine_fw', termine_fw);
 app.use('/termine_jf', termine_jf);
 app.use('/aktuelles', aktuelles);
 app.use('/kontakt', kontakt);
+app.use('/einsaetze', einsaetze);
 
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

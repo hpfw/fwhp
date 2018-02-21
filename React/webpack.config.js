@@ -51,7 +51,7 @@ module.exports = {
         path: path.join(__dirname, 'src'),
         //filename: 'bundle.js',
         filename: 'client.min.js',
-          publicPath: "/javascripts/",
+        publicPath: "/javascripts/",
     },
     module: {
         loaders: [
