@@ -10,7 +10,7 @@ export default class Layout extends React.Component {
     const containerStyle = {
       marginTop: "50px"
     };
-    console.log("layout");
+
     return (
       <div class="schrift">
         

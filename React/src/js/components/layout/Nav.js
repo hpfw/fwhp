@@ -42,8 +42,10 @@ export default class Nav extends React.Component {
     const { collapsed } = this.state;
     const home = location.pathname === "/" ? "active" : "";
     const navClass = collapsed ? "collapse" : "";
+    const einsaetze = location.pathname.match(/^\/einsaetze/) ? "active" : "";
 
-    return (
+
+      return (
         <nav class="navbar navbar-default navbar-fixed-top schrift">
           <div class="container-fluid">
             <div class="navbar-header">
@@ -52,19 +54,19 @@ export default class Nav extends React.Component {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand mouse_curser"  onClick={() => this.handleClick("home")}>Freiwillige Feuerwehr Waldburg</a>
+              <IndexLink to="/"><a class="navbar-brand mouse_curser"  onClick={() => this.handleClick("home")}>Freiwillige Feuerwehr Waldburg</a></IndexLink>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav navbar-right">
-                <li class= {this.state.home == true ? 'mouse_curser active' : 'mouse_curser'} onClick={() => this.handleClick("home")}><a>HOME</a></li>
-                <li class= {this.state.aktuelles == true ? 'mouse_curser active' : 'mouse_curser'} onClick={() => this.handleClick("aktuelles")}><a>AKTUELLES</a></li>
-                <li class= {this.state.termine == true ? 'mouse_curser active' : 'mouse_curser'} onClick={() => this.handleClick("termine")}><a>TERMINE</a></li>
-                <li class= {this.state.contact == true ? 'mouse_curser active' : 'mouse_curser'} onClick={() => this.handleClick("contact")}><a>KONTAKT</a></li>
+                <li class= {this.state.home == true ? 'mouse_curser active' : 'mouse_curser'} onClick={() => this.handleClick("home")}><IndexLink to="/">HOME</IndexLink ></li>
+                <li class= {this.state.aktuelles == true ? 'mouse_curser active' : 'mouse_curser'} onClick={() => this.handleClick("aktuelles")}><IndexLink to="/">AKTUELLES</IndexLink ></li>
+                <li class= {this.state.termine == true ? 'mouse_curser active' : 'mouse_curser'} onClick={() => this.handleClick("termine")}><IndexLink to="/">TERMINE</IndexLink ></li>
+                <li class= {this.state.contact == true ? 'mouse_curser active' : 'mouse_curser'} onClick={() => this.handleClick("contact")}><IndexLink to="/">KONTAKT</IndexLink ></li>
                 <li class= {this.state.mehr == true ? 'drowdown active' : 'drowdown'}>
                   <a class="dropdown-toggle" data-toggle="dropdown">MEHR
                     <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li class='mouse_curser' onClick={() => this.handleDrowdown("mehr")}><a>Einsätze</a></li>
+                    <li class='mouse_curser' onClick={() => this.handleDrowdown("mehr")}><Link to="einsaetze"> Einsätze</Link></li>
                     <li class='mouse_curser' onClick={() => this.handleDrowdown("mehr")}><a>Probeplan</a></li>
                   </ul>
                 </li>

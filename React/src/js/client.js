@@ -15,7 +15,8 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={hashHistory}>
             <Route path="/" component={Layout}>
-              <IndexRoute component={Einsaetze}></IndexRoute>
+                <IndexRoute component={Home}></IndexRoute>
+                <Route path="einsaetze" name="einsaetze" component={Einsaetze}></Route>
             </Route>
         </Router>
     </Provider>,
