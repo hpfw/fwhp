@@ -31,14 +31,31 @@ export default class Einsaetze extends React.Component {
       const einsaetze = this.props.new_einsaetze;
       
       return (
-        <div class="parallax">
+        <div class="timeline-container bg">
+            <div class="timeline-header">
+                <h2 class="timeline-header__title">Denkt euch was aus</h2>
+                <h3 class="timeline-header__subtitle">hier musste auch noch Text hin </h3>
+            </div>
+        
+
+         <div class="parallax">
             <div class="timeline">
 
         {einsaetze.data.map(function(data , index) {
             arrayPic = data.bilder.split(",")
 
             return (
-                <div class= {(index % 2) == 0 ? 'container_timeline left_timeline' : 'container_timeline right_timeline'}>
+                <div class="timeline" id="A">
+                    <div class="timeline-item" data-text="">
+                        <div class="timeline__content"><img src={require("../../images/" + arrayPic[0])} class="timeline__img"/>
+                            <h2 class="timeline__content-title">{data.datum}</h2>
+                            <p class="timeline__content-desc">{data.text}</p>
+                        </div>
+                    </div>
+                </div>
+
+                /*
+                   <div class= {(index % 2) == 0 ? 'container_timeline left_timeline' : 'container_timeline right_timeline'}>
                     <div class="box">              
                         <img src={require("../../images/" + arrayPic[0])} width="100%" height="100%"/>
                             <div class="content_timeline">
@@ -51,6 +68,7 @@ export default class Einsaetze extends React.Component {
                             </div>
                     </div>
                 </div>
+                */
             );
         })}
 
@@ -76,13 +94,9 @@ export default class Einsaetze extends React.Component {
                 </div>
 
 
-
-
-
-
             </div>
         </div>
-
+        </div>
        
       );
   }
