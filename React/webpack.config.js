@@ -1,4 +1,4 @@
-var debug = process.env.NODE_ENV !== "production";
+/*var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
 
@@ -39,7 +39,7 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
     ],
 };
-/*
+*/
 
 var path = require('path');
 const webpack = require('webpack');
@@ -81,7 +81,7 @@ module.exports = {
             }
         }),
         new webpack.optimize.DedupePlugin(), //dedupe similar code
-        new webpack.optimize.UglifyJsPlugin(), //minify everything
+        //new webpack.optimize.UglifyJsPlugin(), //minify everything
         new webpack.optimize.AggressiveMergingPlugin(),//Merge chunks
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.NoErrorsPlugin(),
@@ -91,4 +91,4 @@ module.exports = {
         new webpack.optimize.LimitChunkCountPlugin({maxChunks: 15}),
     ],
 };
-*/
+

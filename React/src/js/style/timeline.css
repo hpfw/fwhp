@@ -3,18 +3,20 @@
     margin: 0 auto;
     flex-wrap: wrap;
     flex-direction: column;
-    max-width: 70%;
+    max-width: 55%;
     position: relative;
 }
 
 .timeline__content-title {
-    font-weight: normal;
-    font-size: 66px;
-    margin: -55px 0 0 0 !important;
+    text-shadow: 2px 2px 4px #000000;
+    font-weight: bold;
+    font-size: 55px;
+    margin: -40px 0 0 0 !important;
     transition: 0.4s;
     padding: 0 10px !important;
     box-sizing: border-box;
     color: #fff;
+    font-family: Prompt !important;
 }
 
 .timeline__content-desc {
@@ -23,7 +25,7 @@
     margin: 0;
     font-size: 15px;
     box-sizing: border-box;
-    color: rgba(255, 255, 255, .7);
+    color: rgba(255, 255, 255, .8);
     font-weight: normal;
     line-height: 25px;
 }
@@ -54,17 +56,18 @@
 }
 
 .timeline-item:before {
+    content: attr(data-text);
     letter-spacing: 3px;
     width: 100%;
     position: absolute;
-    color: rgba(255, 255, 255, .5);
-    font-size: 13px;
-    border-left: 2px solid rgba(255, 255, 255, .5);
-    top: 70%;
+    color: rgba(255, 255, 255, .7);
+    font-size: 2rem;
+    border-left: 3px solid rgba(255, 255, 255, .7);
+    top: 30%;
     margin-top: -5px;
-    padding-left: 15px;
-    opacity: 0;
-    right: calc(-100% - 56px);
+    padding-left: 8px;
+    opacity: 1;
+    right: calc(-100% - 44px);
 }
 
 .timeline-item:nth-child(even) {
@@ -74,10 +77,10 @@
 .timeline-item:nth-child(even):before {
     right: auto;
     text-align: right;
-    left: calc(-100% - 56px);
+    left: calc(-100% - 43px);
     padding-left: 0;
     border-left: none;
-    border-right: 2px solid rgba(255, 255, 255, .5);
+    border-right: 3px solid rgba(255, 255, 255, .7);
     padding-right: 15px;
 }
 
@@ -151,8 +154,9 @@
 
 .timeline-header__title {
     color: #fff;
-    font-size: 46px;
-    font-weight: normal;
+    font-size: 55px;
+    font-weight: bold;
+    font-family: Prompt !important;
     margin: 0;
 }
 
@@ -166,7 +170,6 @@
 
 .parallax {
     background-image: url("../../images/waldburg1.jpg");
-
     /* Set a specific height */
     min-height: 350px;
     /* Create the parallax scrolling effect */
@@ -182,31 +185,12 @@
 
 .info_link {
     color: #ff0000;
+    cursor: pointer !important;
 }
-
-
-
-.slideanim {visibility:hidden;}
-
-.slide {
-    animation-name: slide;
-    -webkit-animation-name: slide;
-    animation-duration: 1.25s;
-    -webkit-animation-duration: 1.25s;
-    visibility: visible;
+.info_link:hover {
+    color: #ffffff;
+    cursor: pointer !important;
 }
-
-@keyframes slide {
-    0% {
-        opacity: 0;
-        transform: translateY(70%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0%);
-    }
-}
-
 
 
 
