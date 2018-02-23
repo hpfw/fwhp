@@ -72,7 +72,7 @@ export default class Einsaetze extends React.Component {
             );
         })}
 
-        
+
                   
         </div>
            

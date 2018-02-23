@@ -19,9 +19,11 @@
     "google-maps-react": "^1.1.2",
     "history": "^1.17.0",
     "react": "^0.14.6",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^0.14.6",
     "react-google-maps": "^9.4.5",
     "react-redux": "^5.0.7",
+    "react-reveal": "^1.1.7",
     "react-router": "^1.0.3",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
@@ -29,10 +31,10 @@
     "redux-promise-middleware": "^5.0.0",
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.20.1",
+    "webpack": "^3.11.0",
     "webpack-dev-server": "^1.16.5"
   },
   "devDependencies": {},
-
   "scripts": {
     "dev": "webpack-dev-server --content-base src --inline --hot"
   },
