@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //var nodemailer = require('nodemailer');
 var index = require('./routes/index'); 
-var termine_fw = require('./routes/termine_fw'); 
+var insert = require('./routes/insert');
+var termine_fw = require('./routes/termine_fw');
 var termine_jf = require('./routes/termine_jf');
 var aktuelles = require('./routes/aktuelles');
 var kontakt = require('./routes/kontakt');
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Login als Startseite festlegen
 app.use('/', index);
+app.use('/insert', insert);
 app.use('/termine_fw', termine_fw);
 app.use('/termine_jf', termine_jf);
 app.use('/aktuelles', aktuelles);
