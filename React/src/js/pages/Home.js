@@ -1,11 +1,13 @@
 import React from "react";
-import style from '../style/style.css';
+import '../style/style.css';
 import { connect } from "react-redux"
 import { termineFW } from "../actions/termine_fw_action"
 import { termineJF } from "../actions/termine_jf_action"
 import { aktuelles } from "../actions/aktuelles_action"
 import { kontakt } from "../actions/kontakt_action"
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/css/image-gallery.css";
 
 @connect((store) => {  return {
         new_termine_fw: store.termine_fw_red.termine,
@@ -65,59 +67,12 @@ export class Home extends React.Component {
       const termine_jf = this.props.new_termine_jf;
       const aktuelles = this.props.new_aktuelles;
       var {name, email, comments} = this.state
+      const images = [{original: require("../../images/waldburg1.jpg")},{original: require("../../images/waldburg2.jpg")},{original: require("../../images/waldburg5.jpg")},{original: require("../../images/waldburg4.jpg")}]
 
       return (
         <div id="home" data-spy="scroll" data-target=".navbar" data-offset="50">
 
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-            <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarousel" data-slide-to="1"></li>
-              <li data-target="#myCarousel" data-slide-to="2"></li>
-              <li data-target="#myCarousel" data-slide-to="3"></li>
-            </ol>
-
-
-            <div class="carousel-inner" role="listbox">
-              <div class="item active">
-                <img src={require("../../images/waldburg1.jpg")} width="100%" height="100%"/>
-                  <div class="carousel-caption">
-                    <h3>Waldburg</h3>
-                  </div>
-              </div>
-
-              <div class="item">
-                <img src={require("../../images/waldburg2.jpg")} width="100%" height="100%"/>
-                <div class="carousel-caption">
-                    <h3>Waldburg</h3>
-                  </div>
-              </div>
-
-              <div class="item">
-                <img src={require("../../images/waldburg1.jpg")} width="100%" height="100%"/>
-                  <div class="carousel-caption">
-                    <h3>Waldburg</h3>
-                  </div>
-              </div>
-
-              <div class="item">
-                <img src={require("../../images/waldburg2.jpg")} width="100%" height="100%"/>
-                <div class="carousel-caption">
-                  <h3>Waldburg</h3>
-                </div>
-              </div>
-            </div>
-
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
+            <ImageGallery items={images} showPlayButton={false} autoPlay={true} showFullscreenButton={false} showThumbnails={false} showBullets={false} />
 
           <div id="aktuelles" class="bg-1 black">
             <div class="container text-center">

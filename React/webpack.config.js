@@ -38,8 +38,8 @@ module.exports = {
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
     ],
-};
-*/
+};*/
+
 
 var path = require('path');
 const webpack = require('webpack');

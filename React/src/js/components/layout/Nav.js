@@ -54,7 +54,7 @@ export default class Nav extends React.Component {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <IndexLink to="/"><a class="navbar-brand mouse_curser"  onClick={() => this.handleClick("home")}>Freiwillige Feuerwehr Waldburg</a></IndexLink>
+              <IndexLink to="/" class="navbar-brand mouse_curser"  onClick={() => this.handleClick("home")}>Freiwillige Feuerwehr Waldburg</IndexLink>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav navbar-right">

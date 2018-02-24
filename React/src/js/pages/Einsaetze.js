@@ -1,10 +1,11 @@
 import React from "react";
-import timeline from '../style/timeline.css';
-import modal from '../style/modal.css';
-//import style from '../style/style.css';
+import '../style/timeline.css';
+import '../style/modal.css';
 import { connect } from "react-redux"
 import { einsaetze } from "../actions/einsaetze_action"
 import { Fade } from 'react-reveal';
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/css/image-gallery.css";
 
 @connect((store) => {  return {
     new_einsaetze: store.einsaetze_red.einsaetze,
@@ -16,7 +17,6 @@ export default class Einsaetze extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            galleryIndex: 1,
             galleryImages: [],
             galleryHeader: "",
             galleryText: "",
@@ -27,38 +27,11 @@ export default class Einsaetze extends React.Component {
         this.props.dispatch(einsaetze());
     }
 
-    componentDidMount() {
-        //window.addEventListener('scroll', this.handleScroll);
-    }
-
-    handleClick = (event, index) => {
-        var { galleryIndex } = this.state
-        var slides = document.getElementsByClassName("mySlides");
-        galleryIndex = galleryIndex + index
-        if(slides.length < galleryIndex){
-            galleryIndex = 1
-        }else if(galleryIndex < 1){
-            galleryIndex = slides.length
-        }
-        this.setState({galleryIndex: galleryIndex})
-
-        for (var i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-
-        slides[galleryIndex-1].style.display = "block";
-    }
 
     showImage = (event, data) =>{
-        console.log(data)
         var images = data.bilder.split(",")
-        this.setState({galleryIndex: 1, galleryImages: images, galleryText: data.text, galleryHeader: data.art}, () => {
-            var slides = document.getElementsByClassName("mySlides");
-            for (var i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[0].style.display = "block";
-        })
+        this.setState({galleryImages: images, galleryText: data.text, galleryHeader: data.art})
+
     }
 
 
@@ -66,12 +39,15 @@ export default class Einsaetze extends React.Component {
         var arrayPic = [];
         const einsaetze = this.props.new_einsaetze;
         var { galleryHeader, galleryImages, galleryText } = this.state
+        var images = []
+        for(var i = 0; i<galleryImages.length; i++){
+            images.push({original: require("../../images/"+galleryImages[i]), thumbnail: require("../../images/"+galleryImages[i])})
+        }
 
         return (
 
             <div>
                 <div class="timeline-container parallax" id="timeline-1" >
-
 
                     {
                         einsaetze.data.map(function(dataYear , index) {
@@ -120,21 +96,7 @@ export default class Einsaetze extends React.Component {
                                 <h3 class="modal-title">{galleryHeader}</h3>
                                 <p>{galleryText}</p>
 
-                                <div class="slideshow-container">
-                                    {
-                                        galleryImages.map(function (image, index) {
-                                            return(
-                                                <div class="mySlides fade_gallery">
-                                                    <div class="numbertext">{index+1} / {galleryImages.length}</div>
-                                                    <img src={require("../../images/"+image)} width="100%" height="100%"/>
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                    <a class="prev" onClick={(e) => {this.handleClick(e, -1)}}>&#10094;</a>
-                                    <a class="next" onClick={(e) => {this.handleClick(e, 1)}}>&#10095;</a>
-
-                                </div>
+                                <ImageGallery items={images}  showPlayButton={false} slideOnThumbnailHover={true}/>
                                 <div class="button_space">
                                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Schließen</button>
                                 </div>
