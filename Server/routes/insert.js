@@ -2,10 +2,15 @@ var express = require('express');
 var router = express.Router();
 var app = require('.././app');
 
-
-/* GET home page. */
 router.get('/', function(req, res) {
-    res.render('insert');
+    if (req.isAuthenticated()) {
+        res.render('insert');
+    }
+    else{
+        res.render('login');
+    }
 });
+
+
 
 module.exports = router;

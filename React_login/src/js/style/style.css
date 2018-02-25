@@ -4,6 +4,11 @@
 body {
     font: 400 15px/1.8 Lato, sans-serif;
     color: #777;
+    background-image: url("../../images/waldburg1.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 h3, h4 {
     margin: 10px 0 30px 0;
@@ -12,7 +17,11 @@ h3, h4 {
     color: #111;
 }
 .container {
-    padding: 80px 120px;
+    padding: 80px 300px;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
 .person {
     border: 10px solid transparent;
@@ -75,7 +84,7 @@ h3, h4 {
     padding: 10px 20px;
     background-color: #ff0000;
     color: #f1f1f1 !important;
-    border-radius: 0;
+    border-radius: 4px;
     transition: .2s;
 }
 .btn:hover {
@@ -135,6 +144,12 @@ footer {
     background-color: #2d2d30;
     color: #ff0000;
     padding: 32px;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
 }
 footer a {
     color: #ff0000;
@@ -144,7 +159,7 @@ footer a:hover {
     text-decoration: none;
 }
 .form-control {
-    border-radius: 0;
+    border-radius: 0px 4px 4px 0px;
 }
 textarea {
     resize: none;
@@ -225,9 +240,6 @@ textarea {
     /* The image used */
     background-image: url("../../images/waldburg1.jpg");
 
-    /* Set a specific height */
-    min-height: 350px; 
-
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -262,6 +274,10 @@ textarea {
     padding: 4px !important;
     display: none;
 }
+.alert {
+    padding: 0px !important;
+    margin-bottom: 0px;
+}
 .success {
     text-align: center !important;
     font-size: 2rem;
@@ -269,11 +285,6 @@ textarea {
     display: none;
 }
 
-
-.modal-open .navbar-fixed-top,
-.modal-open .navbar-fixed-bottom {
-    padding-right: 17px;
-}
 
 
 

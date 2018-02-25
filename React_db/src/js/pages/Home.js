@@ -1,5 +1,5 @@
 import React from "react";
-import style from '../style/style.css';
+import '../style/style.css';
 import { connect } from "react-redux"
 import { termineFW } from "../actions/termine_fw_action"
 import { termineJF } from "../actions/termine_jf_action"

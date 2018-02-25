@@ -1,4 +1,4 @@
-var debug = process.env.NODE_ENV !== "production";
+/*var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
 
@@ -30,7 +30,7 @@ module.exports = {
     },
     output: {
         path: __dirname + "/src/",
-        filename: "client.min.js",
+        filename: "login.min.js",
        // publicPath: "/javascripts/"
     },
     plugins: debug ? [] : [
@@ -39,7 +39,7 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
     ],
 };
-/*
+*/
 
 var path = require('path');
 const webpack = require('webpack');
@@ -49,7 +49,7 @@ module.exports = {
     entry: "./src/js/client.js",
     output: {
         path: path.join(__dirname, 'src'),
-        filename: 'client.min.js',
+        filename: 'login.min.js',
             publicPath: "/javascripts/",
     },
     module: {
@@ -91,4 +91,4 @@ module.exports = {
         new webpack.optimize.LimitChunkCountPlugin({maxChunks: 15}),
     ],
 };
-*/
+

@@ -1,13 +1,12 @@
 import React from "react";
 import { IndexLink, Link } from "react-router";
-import '../../style/style.css';
-import config from '../../../config/config'
+import style from '../../style/style.css';
 
 export default class Nav extends React.Component {
   constructor() {
     super()
     this.state = {
-      collapsed: true,
+        collapsed: true,
         home: true,
         aktuelles: false,
         termine: false,
@@ -57,9 +56,6 @@ export default class Nav extends React.Component {
               <IndexLink to="/" class="navbar-brand mouse_curser"  onClick={() => this.handleClick("home")}>Freiwillige Feuerwehr Waldburg</IndexLink>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href={config.BASE_URL+"logout"}><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-              </ul>
             </div>
           </div>
         </nav>
