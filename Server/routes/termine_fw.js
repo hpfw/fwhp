@@ -4,6 +4,7 @@ var app = require('.././app');
 var mysql = require('mysql');
 var date = new Date();
 var dateFormat = require('dateformat');
+var user = require('../database/user')
 
 
 var wochentage = (param) => {
@@ -60,25 +61,28 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-    var con = mysql.createConnection({
-        host: "localhost",
-        port: "3306",
-        user: "feuerweh",
-        password: "Feuerwehr!?123FFW!",
-        database: "feuerweh_"
-    });
-    var values = []
-    values.push(req.body.data)
-
-    con.connect(function(err) {
-        if (err) throw err;
-
-        con.query("INSERT INTO termine_fw (uhrzeit, datum, leiter, probe) VALUES ?", [values], function (err, result) {
-            if (err) throw err;
-            con.end();
-            res.send({ status: result })
+    user(req.sessionStore.sessions, function (username) {
+        var con = mysql.createConnection({
+            host: "localhost",
+            port: "3306",
+            user: "feuerweh",
+            password: "Feuerwehr!?123FFW!",
+            database: "feuerweh_"
         });
-    });
+        var values = []
+        req.body.data.push(username)
+        values.push(req.body.data)
+
+        con.connect(function (err) {
+            if (err) throw err;
+
+            con.query("INSERT INTO termine_fw (uhrzeit, datum, leiter, probe, username) VALUES ?", [values], function (err, result) {
+                if (err) throw err;
+                con.end();
+                res.send({status: result})
+            });
+        });
+    })
 });
 
 

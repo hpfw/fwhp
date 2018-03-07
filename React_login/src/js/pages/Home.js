@@ -29,22 +29,6 @@ export default class Home extends React.Component {
       this.setState({ [name]: e.target.value })
     }
 
-
-    handleSend = () => {
-      var {id, pw } = this.state;
-
-      if (id != '' && pw != '' ) {
-        //this.props.dispatch(login(id, pw ));
-
-        document.getElementById("errorMsg").style.display = "none";
-      } else {
-        document.getElementById("errorMsg").style.display = "inline";
-      }
-
-    }
-
-
-
     render() {
         var { id, pw } = this.state
 
@@ -68,7 +52,7 @@ export default class Home extends React.Component {
                               <input id="passwort" type="password" class="form-control" name="password" placeholder="Passwort" value={pw} onChange={(e) => {this.handleChange(e, "pw")}}/>
                           </div>
                           <br/>
-                          <button type="submit" class="btn pull-right" onClick={this.handleSend}>Login</button>
+                          <button type="submit" class="btn pull-right">Login</button>
                       </form>
                   </div>
           </div>

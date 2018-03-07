@@ -36,14 +36,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var checkAuth = function (id, pw, callbck) {
-    if (id == "test" && pw == "123") {
-        callbck(true)
-    } else {
-        callbck(false)
-    }
-}
-
 passport.serializeUser(function (user, done) {
     done(null, user);
 });
@@ -57,7 +49,7 @@ passport.use('local', new localStrategy(
         auth.checkauth(username, password, function (auth) {
             if (auth == true) {
                 console.log('login true');
-                return done(null, true);
+                return done(null, username);
             } else {
                 console.log('login false');
                 return done(null, false, {"message": "User not found."});
@@ -68,8 +60,8 @@ passport.use('local', new localStrategy(
 
 app.use(session({
     secret: "tHiSiSasEcRetStr",
-    resave: true,
-    saveUninitialized: true
+    resave: false,
+    saveUninitialized: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
