@@ -1,3 +1,4 @@
+// dev
 /*var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
@@ -41,6 +42,7 @@ module.exports = {
 };
 */
 
+// prod
 var path = require('path');
 const webpack = require('webpack');
 
@@ -50,7 +52,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'src'),
         filename: 'client.min.js',
-            publicPath: "/javascripts/",
+            publicPath: "/javascripts/", // muss für run dev draussen sein
     },
     module: {
         loaders: [
