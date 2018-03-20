@@ -44,8 +44,10 @@ router.get('/', function(req, res) {
 
     con.connect(function(err) {
         if (err) throw err;
+
+        date.setDate(date.getDate() - 1);
     
-        con.query("SELECT * FROM termine_fw WHERE datum >= " + mysql.escape(date) + ' LIMIT 1', function (err, result, fields) {
+        con.query("SELECT * FROM termine_fw WHERE datum >= " + mysql.escape(date)  + ' LIMIT 1', function (err, result, fields) {
             if (err) throw err;
             con.end();
 

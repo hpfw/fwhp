@@ -16,7 +16,7 @@ export default class Footer extends React.Component {
             <a class="up-arrow" onClick={() => this.handleClick("home")} data-toggle="tooltip" title="to the doctor!">
                 <span class="glyphicon glyphicon-chevron-up"></span>
             </a><br/><br/>
-            <p>Zum Seiten Beginn</p>
+            <p>Zum Seiten-Beginn</p>
         </footer>
     );
   }

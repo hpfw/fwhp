@@ -9,11 +9,11 @@ export default function reducer(state = {    // reducer schaut Komponenten an, d
 
     switch (action.type) {
         case "FETCH_EINSAETZE": {
-            console.log("FETCH_EINSAETZE");
+            // console.log("FETCH_EINSAETZE");
             return {...state, fetching: true} // im fetching zustand daher true
         }
         case "FETCH_EINSAETZE_REJECTED": {
-            console.log("FETCH_EINSAETZE_REJECTED");
+            // console.log("FETCH_EINSAETZE_REJECTED");
             return {...state, fetching: false, error: action.payload}
         }
         case "FETCH_EINSAETZE_FULFILLED": {  // ...state: state von oben: nimmt alle States von oben und ändert jene, die geändert werden sollen.

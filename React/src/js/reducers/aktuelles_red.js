@@ -10,11 +10,11 @@ export default function reducer(state={    // reducer schaut Komponenten an, die
 
 switch (action.type) {
 case "FETCH_AKTUELLES": {
-console.log("FETCH_AKTUELLES");
+// console.log("FETCH_AKTUELLES");
 return {...state, fetching: true} // im fetching zustand daher true
 }
 case "FETCH_AKTUELLES_REJECTED": {
-console.log("FETCH_AKTUELLES_REJECTED");
+// console.log("FETCH_AKTUELLES_REJECTED");
 return {...state, fetching: false, error: action.payload}
 }
 case "FETCH_AKTUELLES_FULFILLED": {  // ...state: state von oben: nimmt alle States von oben und ändert jene, die geändert werden sollen.
