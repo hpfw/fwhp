@@ -50,11 +50,11 @@ router.get('/', function(req, res) {
         con.query("SELECT * FROM termine_jf WHERE datum >= " + mysql.escape(date) + ' LIMIT 1', function (err, result, fields) {
             if (err) {
                 res.send({
-                    datum: "",
-                    uhrzeit: "",
-                    probe: "",
-                    leiter: "",
-                    tag: ""
+                    datum: "-",
+                    uhrzeit: "-",
+                    probe: "-",
+                    leiter: "-",
+                    tag: "-"
                 })
                 throw err;
             }
