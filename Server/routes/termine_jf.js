@@ -48,7 +48,16 @@ router.get('/', function(req, res) {
         date.setDate(date.getDate() - 1);
     
         con.query("SELECT * FROM termine_jf WHERE datum >= " + mysql.escape(date) + ' LIMIT 1', function (err, result, fields) {
-            if (err) throw err;
+            if (err) {
+                res.send({
+                    datum: "",
+                    uhrzeit: "",
+                    probe: "",
+                    leiter: "",
+                    tag: ""
+                })
+                throw err;
+            }
             con.end();
 
             var stringDate = result[0].datum.toString();
