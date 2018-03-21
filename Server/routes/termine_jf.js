@@ -53,8 +53,8 @@ router.get('/', function(req, res) {
                     datum: "-",
                     uhrzeit: "-",
                     probe: "-",
-                    leiter: "-",
-                    tag: "-"
+                    leiter: "Jürgen",
+                    tag: "Heute"
                 })
                 throw err;
             }
@@ -64,7 +64,7 @@ router.get('/', function(req, res) {
             var dateFrom = dateFormat(stringDate, "dd.mm.yyyy");
             var day = wochentage(dateFormat(stringDate, "dddd"));
             
-            res.send({ datum: dateFrom, uhrzeit: result[0].uhrzeit, probe: result[0].probe, leiter: result[0].leiter, tag: day })
+            res.send({ datum: dateFrom, uhrzeit: result[0].uhrzeit, probe: result[0].probe, leiter: result[0].leiter, tag: "test" })
         });
     });
 
