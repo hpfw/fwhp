@@ -59,6 +59,7 @@ router.get('/', function(req, res) {
             var day = wochentage(dateFormat(stringDate, "dddd"));
             res.send({ datum: "02.04.2019", uhrzeit: "18:30", probe: "asdg", leiter: "125125", tag: "Montag" })
             //res.send({ datum: dateFrom, uhrzeit: result[0].uhrzeit, probe: result[0].probe, leiter: result[0].leiter, tag: day })
+            res.send({ datum: "02.04.2019", uhrzeit: "18:30", probe: "asdg", leiter: "125125", tag: day })
         });
     });
 
