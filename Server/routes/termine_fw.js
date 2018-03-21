@@ -7,8 +7,7 @@ var dateFormat = require('dateformat');
 var user = require('../database/user')
 
 
-var wochentage = (param) =
->
+var wochentage = (param) =>
 {
     var day;
 
