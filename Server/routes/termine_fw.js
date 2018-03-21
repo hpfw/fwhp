@@ -64,7 +64,7 @@ router.get('/', function (req, res) {
                     leiter: "-",
                     tag: "-"
                 })
-                //throw err;
+                throw err;
             }
             con.end();
 
