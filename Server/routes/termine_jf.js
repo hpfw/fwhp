@@ -48,16 +48,16 @@ router.get('/', function(req, res) {
         date.setDate(date.getDate() - 1);
     
         con.query("SELECT * FROM termine_jf WHERE datum >= " + mysql.escape(date) + ' LIMIT 1', function (err, result, fields) {
-            if (err) {
-                res.send({ datum: "02.04.2019", uhrzeit: "18:30", probe: "asdg", leiter: "125125", tag: "Montag" })
+            //if (err) {
+            //    res.send({ datum: "02.04.2019", uhrzeit: "18:30", probe: "asdg", leiter: "125125", tag: "Montag" })
                 //throw err;
-            }
+            //}
             //con.end();
 
             var stringDate = result[0].datum.toString();
             var dateFrom = dateFormat(stringDate, "dd.mm.yyyy");
             var day = wochentage(dateFormat(stringDate, "dddd"));
-            
+            res.send({ datum: "02.04.2019", uhrzeit: "18:30", probe: "asdg", leiter: "125125", tag: "Montag" })
             //res.send({ datum: dateFrom, uhrzeit: result[0].uhrzeit, probe: result[0].probe, leiter: result[0].leiter, tag: day })
         });
     });
