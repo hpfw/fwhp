@@ -12,6 +12,8 @@ export default class Nav extends React.Component {
         termine: false,
         contact: false,
         mehr: false,
+        einsaetze: false,
+        login: false,
     };
   }
 
@@ -22,7 +24,7 @@ export default class Nav extends React.Component {
 
   handleClick = (element) => {
     if (element != null){
-        this.setState({home: false, aktuelles: false, termine: false, contact: false, mehr: false})
+        this.setState({home: false, aktuelles: false, termine: false, contact: false, mehr: false, einsaetze: false, login: false,})
         this.setState({[element]: true})
         var element = document.getElementById(element);
         element.scrollIntoView({block: "start", behavior: "smooth"});
@@ -31,7 +33,7 @@ export default class Nav extends React.Component {
   
   handleDrowdown = (element) => {
       if (element != null) {
-          this.setState({home: false, aktuelles: false, termine: false, contact: false, mehr: false})
+          this.setState({home: false, aktuelles: false, termine: false, contact: false, mehr: true, einsaetze: false, login: false,})
           this.setState({[element]: true})
       }
   }
@@ -62,12 +64,12 @@ export default class Nav extends React.Component {
                 <li class= {this.state.aktuelles == true ? 'mouse_curser active' : 'mouse_curser'} onClick={() => this.handleClick("aktuelles")}><IndexLink to="/">AKTUELLES</IndexLink ></li>
                 <li class= {this.state.termine == true ? 'mouse_curser active' : 'mouse_curser'} onClick={() => this.handleClick("termine")}><IndexLink to="/">TERMINE</IndexLink ></li>
                 <li class= {this.state.contact == true ? 'mouse_curser active' : 'mouse_curser'} onClick={() => this.handleClick("contact")}><IndexLink to="/">KONTAKT</IndexLink ></li>
-                <li class= {this.state.mehr == true ? 'drowdown active' : 'drowdown'}>
+                <li class= {this.state.mehr == true ? 'drowdown mouse_curser active' : 'drowdown mouse_curser'}>
                   <a class="dropdown-toggle" data-toggle="dropdown">MEHR
                     <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <li class='mouse_curser' onClick={() => this.handleDrowdown("mehr")}><Link to="einsaetze"> Einsätze</Link></li>
-                    <li class='mouse_curser' onClick={() => this.handleDrowdown("mehr")}><a>Probeplan</a></li>
+                    <li class= {this.state.einsaetze== true ? ' mouse_curser active' : ' inactive mouse_curser'} onClick={() => this.handleDrowdown("einsaetze")}><Link to="einsaetze"> Einsätze</Link></li>
+                    <li class= {this.state.login== true ? ' mouse_curser active' : 'inactive mouse_curser'} onClick={() => this.handleDrowdown("login")}><Link to="login"> Login</Link></li>
                   </ul>
                 </li>
               </ul>

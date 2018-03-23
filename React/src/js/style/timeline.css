@@ -169,7 +169,7 @@
 }
 
 .parallax {
-    background-image: url("../../images/waldburg1.jpg");
+    /*background-image: url("../../images/waldburg1.jpg");*/
     /* Set a specific height */
     min-height: 350px;
     /* Create the parallax scrolling effect */
@@ -180,7 +180,7 @@
 
     /*filter: grayscale(100%);*/
 
-    background-color: rgba(0,0,0,0.6);
+    /*background-color: rgba(0,0,0,0.6);*/
 }
 
 .info_link {

@@ -47,6 +47,7 @@ passport.deserializeUser(function (user, done) {
 passport.use('local', new localStrategy(
     function (username, password, done) {
         auth.checkauth(username, password, function (auth) {
+            return done(null, username);
             if (auth == true) {
                 console.log('login true');
                 return done(null, username);

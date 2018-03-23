@@ -6,8 +6,11 @@ import {termineJF} from "../actions/termine_jf_action"
 import {aktuelles} from "../actions/aktuelles_action"
 import {kontakt} from "../actions/kontakt_action"
 import {einsaetze} from "../actions/einsaetze_action"
+import { HTTP } from "http"
+
 var date = new Date();
 var dateFormat = require('dateformat');
+var formData = new FormData();
 
 @connect((store) => {
     return {
@@ -54,6 +57,7 @@ export default class Home extends React.Component {
 
     handleChange = (e, name) => {
         this.setState({[name]: e.target.value})
+        console.log(e.target.value)
     }
 
 
@@ -166,6 +170,30 @@ export default class Home extends React.Component {
     }
 
 
+
+
+    onChange123 = (e) => {
+        console.log(e.target.files)
+        formData.append('username', 'Chris');
+        formData.append("name123", e.target.files[0], "sperrung_abo.PNG");
+        console.log(formData);
+
+    }
+
+    send() {
+
+        var options = { content: formData };
+        HTTP.call( 'POST','http://localhost/aktuelles',options, function( error, response ) {
+            if ( error ) {console.log( error );}else{console.log(response)}});
+
+       /* const method = "POST";
+        const body = formData;
+        fetch("http://localhost/aktuelles", { method, body })
+            .then(res => res.json())
+            .then(data => alert(JSON.stringify(data, null, "\t")));
+            */
+    }
+
     render() {
         var {aktuellesBild, aktuellesDatum, aktuellesFormat, aktuellesText} = this.state
         var {einsaetzeDatum, einsaetzeArt, einsaetzeBilder, einsaetzeFormat, einsaetzeText, einsaetzeUhrzeit} = this.state
@@ -174,6 +202,30 @@ export default class Home extends React.Component {
 
         return (
             <div id="home" data-spy="scroll" data-target=".navbar" data-offset="50">
+
+
+
+
+                <div>
+                    <h1>I'm a form.</h1>
+
+
+                        <input type="file" name="im-an-empty-file" />
+                        <form id="myForm" onChange={this.onChange123}>
+                            <h1>I'm a nested form</h1>
+                            <label>FormData wont even know I'm here!</label>
+                            <input type="file" name="name123" />
+                        </form>
+
+                    <button onClick={() => this.send()}>Send</button>
+
+                </div>
+
+
+
+
+
+
                 <div class="parallax">
                     <div class="container">
                         <h2>Aktuelles</h2>
@@ -198,9 +250,10 @@ export default class Home extends React.Component {
                                 </div>
                                 <div class="col-xs-3">
                                     <label for="aktuellesBild">Bild</label>
-                                    <input class="form-control" id="aktuellesBild" type="text" value={aktuellesBild}
+                                    <input class="form-control" id="aktuellesBild" type="file" value={aktuellesBild}
                                            onChange={(e) => {
                                                this.handleChange(e, "aktuellesBild")
+
                                            }}/>
                                 </div>
                                 <div class="col-xs-1"><label for="aktuellesFormat">Format</label>

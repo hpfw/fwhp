@@ -1,10 +1,11 @@
+
 var express = require('express');
 var router = express.Router();
 var app = require('.././app');
 var mysql = require('mysql');
 var date = new Date();
 var dateFormat = require('dateformat');
-var user = require('../database/user')
+var user = require('../database/user');
 
 
 router.get('/', function (req, res) {
@@ -29,9 +30,15 @@ router.get('/', function (req, res) {
 
 router.post('/', function (req, res) {
 
-    res.send({status: req.cookies})
+    console.log("asdasddsad");
+    console.log(req.body);
+    console.log(req.file);
+
+
+
+   /* res.send({status: req.cookies})
     user(req.sessionStore.sessions, function (username) {
-     /*   var con = mysql.createConnection({
+        var con = mysql.createConnection({
             host: "localhost",
             port: "3306",
             user: "feuerweh",
@@ -52,8 +59,8 @@ router.post('/', function (req, res) {
                 res.send({status: req.sessionStore.sessions})
                 res.send({status: result})
             });
-        }); */
-    })
+        });
+    })*/
 });
 
 module.exports = router;
