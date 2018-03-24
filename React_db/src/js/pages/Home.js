@@ -182,10 +182,12 @@ export default class Home extends React.Component {
 
     send() {
 
-        var options = { content: formData };
+        this.props.dispatch(aktuelles("", "", "", formData));
+
+    /*    var options = { content: formData };
         HTTP.call( 'POST','http://localhost/aktuelles',options, function( error, response ) {
             if ( error ) {console.log( error );}else{console.log(response)}});
-
+*/
        /* const method = "POST";
         const body = formData;
         fetch("http://localhost/aktuelles", { method, body })

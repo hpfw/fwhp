@@ -8,6 +8,20 @@ var dateFormat = require('dateformat');
 var user = require('../database/user');
 
 
+
+var multer  = require('multer')
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname) //Appending extension
+    }
+})
+
+var upload = multer({ storage: storage });
+var fs = require('fs');
+
 router.get('/', function (req, res) {
     var con = mysql.createConnection({
         host: "localhost",
@@ -28,11 +42,16 @@ router.get('/', function (req, res) {
     });
 });
 
-router.post('/', function (req, res) {
+router.post('/', upload.array('name123', 12), function (req, res) {
+
+
+   // fs.rename('uploads/'+req.files[0].filename, 'uploads/'+req.files[0].originalname, function(err) {
+    //    if ( err ) console.log('ERROR: ' + err);
+  //  });
 
     console.log("asdasddsad");
     console.log(req.body);
-    console.log(req.file);
+    console.log(req.files);
 
 
 
