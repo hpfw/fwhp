@@ -9,7 +9,7 @@ export function fetchAktuelles() {
 export function setAktuelles(data) {
     return {
         type: "FETCH_AKTUELLES_FULFILLED",
-        payload:  data
+        payload: data
     }
 }
 
@@ -20,21 +20,19 @@ export function aktuellesRejected(error) {
     }
 }
 
-export function aktuelles(text, bild, datum, data) {
+export function aktuelles(text, bildname, datum) {
     return (dispatch) => {
         dispatch(fetchAktuelles());
         return fetch(config.BASE_URL + 'aktuelles', {
-            method: 'POST',
-            mode: 'no-cors',
-            body: data
-         /*   headers: {
+            method: 'PUT',
+            headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                data: [text, bild, datum],
+                data: [text, bildname, datum],
             })
-            */
+
         })
             .then(response => {
                 if (response.status >= 200 && response.status < 300) {
@@ -42,12 +40,12 @@ export function aktuelles(text, bild, datum, data) {
                         dispatch(setAktuelles(json));
                     });
                 } else {
-                        dispatch(aktuellesRejected('Error on fetching'));
+                    dispatch(aktuellesRejected('Error on fetching'));
                 }
             })
             .catch(
                 error => {
-                        dispatch(aktuellesRejected('Error on fetching'));
+                    dispatch(aktuellesRejected('Error on fetching'));
                 }
             );
     };

@@ -3,6 +3,7 @@ import { combineReducers } from "redux"
 import termine_fw_red from "./termine_fw_red"
 import termine_jf_red from "./termine_jf_red"
 import aktuelles_red from "./aktuelles_red"
+import aktuelles_image_red from "./aktuelles_image_red"
 import kontakt_red from "./kontakt_red"
 import einsaetze_red from "./einsaetze_red"
 
@@ -12,4 +13,5 @@ export default combineReducers({
     aktuelles_red,
     kontakt_red,
     einsaetze_red,
+    aktuelles_image_red,
 })
