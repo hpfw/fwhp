@@ -31,7 +31,7 @@ module.exports = {
     output: {
         path: __dirname + "/src/",
         filename: "db.min.js",
-        publicPath: "/javascripts/"
+      //  publicPath: "/javascripts/"
     },
     plugins: debug ? [] : [
         new webpack.optimize.DedupePlugin(),

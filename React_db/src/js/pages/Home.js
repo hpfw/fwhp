@@ -8,6 +8,8 @@ import {aktuellesImage} from "../actions/aktuellesImage"
 import {kontakt} from "../actions/kontakt_action"
 import {einsaetze} from "../actions/einsaetze_action"
 import LoadingBar from 'react-redux-loading-bar'
+import axios from 'axios';
+import config from '../../config/config'
 
 var date = new Date();
 var dateFormat = require('dateformat');
@@ -99,6 +101,16 @@ export default class Home extends React.Component {
 
     sendAktuelles = () => {
         var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
+        var formData = new FormData();
+        formData.append("aktuelles", aktuellesBild, aktuellesBild.name);
+
+        axios.post(config.BASE_URL+'aktuelles', formData, {
+            onUploadProgress: progressEvent => {
+                console.log(progressEvent.loaded / progressEvent.total)
+            }
+        })
+        /*
+        var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
 
         if (aktuellesBild != "" && aktuellesDatum != "" && aktuellesText != "") {
             var formData = new FormData();
@@ -116,6 +128,7 @@ export default class Home extends React.Component {
             document.getElementById("errorAktuelles").style.display = "inline";
             document.getElementById("successAktuelles").style.display = "none";
         }
+        */
     }
     sendEinsaetze = () => {
         var {einsaetzeDatum, einsaetzeArt, einsaetzeText, einsaetzeUhrzeit} = this.state
