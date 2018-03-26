@@ -1,5 +1,6 @@
 import config from '../../config/config'
 import { aktuelles } from './aktuelles_action'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 export function fetchAktuellesIamge() {
     return {
@@ -24,6 +25,7 @@ export function aktuellesIamgeRejected(error) {
 export function aktuellesImage(text, bildname, datum, data) {
     return (dispatch) => {
         dispatch(fetchAktuellesIamge());
+        dispatch(showLoading());
         return fetch(config.BASE_URL + 'aktuelles', {
             method: 'POST',
             mode: 'no-cors',
