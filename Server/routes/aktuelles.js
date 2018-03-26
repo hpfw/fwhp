@@ -53,6 +53,8 @@ router.post('/', upload.array('name123', 12), function (req, res) {
     console.log(req.body);
     console.log(req.files);
 
+    res.send({status: req.files})
+
 
 
    /* res.send({status: req.cookies})

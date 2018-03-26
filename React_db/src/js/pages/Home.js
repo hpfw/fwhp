@@ -175,7 +175,7 @@ export default class Home extends React.Component {
     onChange123 = (e) => {
         console.log(e.target.files)
         formData.append('username', 'Chris');
-        formData.append("name123", e.target.files[0], "sperrung_abo.PNG");
+        formData.append("name123", e.target.files[0], "test.PNG");
         console.log(formData);
 
     }
