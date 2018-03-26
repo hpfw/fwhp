@@ -1,4 +1,5 @@
 import { combineReducers } from "redux"
+import { loadingBarReducer } from 'react-redux-loading-bar'
 
 import termine_fw_red from "./termine_fw_red"
 import termine_jf_red from "./termine_jf_red"
@@ -14,4 +15,5 @@ export default combineReducers({
     kontakt_red,
     einsaetze_red,
     aktuelles_image_red,
+    loadingBar: loadingBarReducer,
 })
