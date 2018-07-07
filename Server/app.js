@@ -31,17 +31,16 @@ const options = {
     cert: fs.readFileSync('cert.cer')
 }; */
 
-
+/*
 app.use (function (req, res, next) {
     if (req.secure) {
         // request was via https, so do no special handling
         next();
     } else {
         // request was via http, so redirect to https
-        console.log("redicreted")
         res.redirect('https://' + req.headers.host + req.url);
     }
-});
+});*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -133,11 +132,7 @@ app.get('*', function(req, res) {
 })*/
 
 
-console.log("dgadg")
 app.listen(80);
 
-console.log("dgadg")
-app.listen(443);
-console.log("dgadg")
 
 module.exports = app;
