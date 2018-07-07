@@ -32,7 +32,8 @@ router.get('/', function (req, res) {
     con.connect(function (err) {
         if (err) throw err;
 
-        con.query("SELECT * FROM aktuelles WHERE datum <= " + mysql.escape(date) + " ORDER BY datum DESC LIMIT 1", function (err, result, fields) {
+        //con.query("SELECT * FROM aktuelles WHERE datum <= " + mysql.escape(date) + " ORDER BY datum DESC LIMIT 1", function (err, result, fields) {
+        con.query("SELECT * FROM aktuelles LIMIT 1", function (err, result, fields) {
             if (err) throw err;
             con.end();
             res.send({text: result[0].text, bild: result[0].bild})
