@@ -110,7 +110,13 @@ http.createServer(app).listen(80);
 var https = require('https');
 https.createServer(options, app).listen(443);*/
 
+//app.listen(80);
+
+
+// set up a route to redirect http to https
+app.get('*', function(req, res) {
+    res.redirect('https://' + req.headers.host + req.url);
+})
 app.listen(80);
-//app.listen("46.251.225.11");
 
 module.exports = app;
