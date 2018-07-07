@@ -20,6 +20,21 @@ var aktuelles = require('./routes/aktuelles');
 var kontakt = require('./routes/kontakt');
 var einsaetze = require('./routes/einsaetze');
 
+var path = require('path');
+var os = require('os')
+var Greenlock = require('greenlock');
+
+var greenlock = Greenlock.create({
+    agreeTos: true                      // Accept Let's Encrypt v2 Agreement
+    , email: 'fwhp@web.com'           // IMPORTANT: Change email and domains
+    , approveDomains: [ 'feuerwehr-waldburg.de' ]
+    , communityMember: false              // Optionally get important updates (security, api changes, etc)
+                                          // and submit stats to help make Greenlock better
+    , version: 'draft-11'
+    , server: 'https://acme-v02.api.letsencrypt.org/directory'
+    , configDir: path.join(os.homedir(), 'acme/etc')
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -92,7 +107,14 @@ app.use(function (err, req, res, next) {
     res.render('index');
 });
 
-app.listen(80);
+var redir = require('redirect-https')();
+require('http').createServer(greenlock.middleware(redir)).listen(80);
+
+require('https').createServer(greenlock.tlsOptions, function (req, res) {
+    res.end('Hello, Secure World!');
+}).listen(443);
+
+//app.listen(80);
 //app.listen("46.251.225.11");
 
 module.exports = app;
