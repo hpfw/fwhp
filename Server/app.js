@@ -133,6 +133,11 @@ app.get('*', function(req, res) {
 })*/
 
 
+console.log("dgadg")
 app.listen(80);
+
+console.log("dgadg")
+app.listen(443);
+console.log("dgadg")
 
 module.exports = app;
