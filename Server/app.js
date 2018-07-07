@@ -163,7 +163,8 @@ http.createServer(app).listen(HTTP_PORT).on('listening', function() {
     return console.log("HTTP to HTTPS redirect app launched.");
 });*/
 
-app.listen(80);
+//app.listen(80);
+app.listen(443);
 
 
 module.exports = app;
