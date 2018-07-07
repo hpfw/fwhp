@@ -20,7 +20,7 @@ var aktuelles = require('./routes/aktuelles');
 var kontakt = require('./routes/kontakt');
 var einsaetze = require('./routes/einsaetze');
 
-/*
+
 const fs = require('fs');
 
 var forceSsl = require('express-force-ssl');
@@ -29,7 +29,7 @@ app.use(forceSsl);
 const options = {
     key: fs.readFileSync('key.key'),
     cert: fs.readFileSync('cert.cer')
-}; */
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -103,20 +103,21 @@ app.use(function (err, req, res, next) {
     res.render('index');
 });
 
-/*
+
 var http = require('http');
 http.createServer(app).listen(80);
 
 var https = require('https');
-https.createServer(options, app).listen(443);*/
+https.createServer(options, app).listen(443);
 
 //app.listen(80);
 
-
+/*
 // set up a route to redirect http to https
 app.get('*', function(req, res) {
+    console.log("testaeatd")
     res.redirect('https://' + req.headers.host + req.url);
 })
-app.listen(80);
+app.listen(80); */
 
 module.exports = app;
