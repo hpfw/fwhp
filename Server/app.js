@@ -31,17 +31,26 @@ const options = {
     cert: fs.readFileSync('cert.cer')
 }; */
 
-
+/*
 app.use (function (req, res, next) {
+    console.log(req.secure)
     if (req.secure) {
         // request was via https, so do no special handling
-        next();
+        console.log("https")
+        res.render('index');
+        //next();
     } else {
+        console.log("http")
         // request was via http, so redirect to https
         //res.redirect('https://' + req.headers.host + req.url);
         res.redirect('https://feuerwehr-waldburg.de/');
     }
-});
+});*/
+/*
+app.get('*', function(req, res) {
+    console.log("testaeatd")
+    res.redirect('https://feuerwehr-waldburg.de/');
+})*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
