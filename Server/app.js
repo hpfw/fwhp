@@ -46,11 +46,11 @@ app.use (function (req, res, next) {
         res.redirect('https://feuerwehr-waldburg.de/');
     }
 });*/
-/*
+
 app.get('*', function(req, res) {
     console.log("testaeatd")
     res.redirect('https://feuerwehr-waldburg.de/');
-})*/
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
