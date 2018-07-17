@@ -68,7 +68,7 @@ export class Home extends React.Component {
         const termine_jf = this.props.new_termine_jf;
         const aktuelles = this.props.new_aktuelles;
         var {name, email, comments} = this.state
-        const images = [{original: require("../../images/waldburg1.jpg")}, {original: require("../../images/waldburg2.jpg")}, {original: require("../../images/waldburg5.jpg")}, {original: require("../../images/waldburg4.jpg")}]
+        const images = [{original: "/images/carousel/carousel_1.jpg"}, {original: "/images/carousel/carousel_2.jpg"}, {original: "/images/carousel/carousel_3.jpg"}, {original: "/images/carousel/carousel_4.jpg"}]
 
         return (
             <div id="home" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -84,7 +84,7 @@ export class Home extends React.Component {
                             <p class="aktuelles"><em>{aktuelles.text} </em></p>
                         </div>
                         <div class="col-sm-7 col-xs-12">
-                            <img src={require("../../images/" + aktuelles.bild)} width="110%" height="110%"/>
+                            <img src={"/images/aktuelles/" + aktuelles.bild} width="110%" height="110%"/>
                         </div>
                     </div>
                 </div>
