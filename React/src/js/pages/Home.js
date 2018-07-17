@@ -68,7 +68,7 @@ export class Home extends React.Component {
         const termine_jf = this.props.new_termine_jf;
         const aktuelles = this.props.new_aktuelles;
         var {name, email, comments} = this.state
-        const images = [{original: "/images/carousel/carousel_1.jpg"}, {original: "/images/carousel/carousel_2.jpg"}, {original: "/images/carousel/carousel_3.jpg"}, {original: "/images/carousel/carousel_4.jpg"}]
+        const images = [{original: "/images/carousel/carousel_1.jpg"}, {original: "/images/carousel/carousel_2.jpg"}, {original: "/images/carousel/carousel_3.jpg"}, {original: "/images/carousel/carousel_4.jpg"}, {original: "/images/carousel/carousel_5.jpg"}, {original: "/images/carousel/carousel_6.jpg"}]
 
         return (
             <div id="home" data-spy="scroll" data-target=".navbar" data-offset="50">
