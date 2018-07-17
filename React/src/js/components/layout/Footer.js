@@ -17,7 +17,7 @@ export default class Footer extends React.Component {
                 <span class="glyphicon glyphicon-chevron-up"></span>
             </a>
             <br/>
-            <a class="up-arrow" data-toggle="collapse" data-target="#datenschutz">Datenschutz</a>
+            <a class="up-arrow datenschutz" data-toggle="collapse" data-target="#datenschutz">Datenschutz</a>
             <div id="datenschutz" class="collapse">
                 <p><strong><big>Datenschutzerklärung</big></strong></p>
                 <p><strong>Allgemeiner Hinweis und Pflichtinformationen</strong></p>
