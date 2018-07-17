@@ -69,7 +69,7 @@ export default class Einsaetze extends React.Component {
                                             return(
                                                 <Fade up>
                                                     <div class="timeline-item" data-text={data.art}>
-                                                        <div class="timeline__content"><img class="timeline__img" src={"../../images/einsaetze/" + arrayPic[0]} />
+                                                        <div class="timeline__content"><img class="timeline__img" src={"/images/einsaetze/" + arrayPic[0]} />
                                                             <h2 class="timeline__content-title">{data.day}</h2>
                                                             <div class="timeline-marker"></div>
                                                             <p class="timeline__content-desc">{data.text.substring(0, 150)+"... "}
