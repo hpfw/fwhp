@@ -1,7 +1,7 @@
 export default function reducer(state={    // reducer schaut Komponenten an, die mit ihm verbunden sind
     aktuelles: {
-        text: "lädt noch",
-        bild: "waldburg1.jpg",
+        text: "...",
+        bild: "platzhalter.jpg",
     },
     fetching: false,
     fetched: false,
