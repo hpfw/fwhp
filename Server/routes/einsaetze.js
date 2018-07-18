@@ -109,12 +109,12 @@ router.post('/', function (req, res) {
             database: "feuerweh_"
         });
         var values = []
-        req.body.data.push(username)
-        values.push(req.body.data)
+        //req.body.data.push(username)
+        //values.push(req.body.data)
 
         con.connect(function (err) {
             if (err) throw err;
-            con.query("INSERT INTO einsaetze (datum, uhrzeit, text, bilder, art, username) VALUES ?", [values], function (err, result) {
+            con.query("INSERT INTO einsaetze (datum, uhrzeit, text, bilder, art) VALUES ?", [values], function (err, result) {
                 if (err) throw err;
                 con.end();
                 res.send({status: result})
