@@ -50,7 +50,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'src'),
         filename: 'db.min.js',
-            publicPath: "/javascripts/",
+        publicPath: "/javascripts/", // muss für run dev draussen sein
     },
     module: {
         loaders: [

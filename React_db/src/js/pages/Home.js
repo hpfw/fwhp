@@ -37,6 +37,9 @@ export default class Home extends React.Component {
             einsaetzeFormat: ".jpg",
             einsaetzeText: "",
 
+            einsaetze_cnt : 0,
+            einsaetze_date: '01022018',
+
             termineFWDatum: "",
             termineFWUhrzeit: "19:30",
             termineFWLeiter: "",
@@ -58,6 +61,11 @@ export default class Home extends React.Component {
 
     handleChange = (e, name) => {
         this.setState({[name]: e.target.value})
+    }
+
+    handleChangeEinsatzDate = (e, name) => {
+        var date = e.target.value
+        this.setState({[name]: e.target.value, einsaetze_date: (date.substring(date.length-2, date.length) + date.substring(date.length-5, date.length-3) + date.substring(date.length-10, date.length-6))})
     }
 
     handleChangeImage = (e, name) => {
@@ -82,12 +90,13 @@ export default class Home extends React.Component {
     }
 
     handleAdd = () => {
-        var {einsaetzeBilder} = this.state
+        var {einsaetzeBilder, einsaetze_cnt, einsaetze_date} = this.state
+        einsaetze_cnt = einsaetze_cnt + 1
         einsaetzeBilder.push(<div class="form-group row">
             <div class="col-xs-7"></div>
             <div class="col-xs-3">
                 <label for="einsaetzeBilder">Bild</label>
-                <input class="form-control" name="einsaetzeBilder" type="text"/>
+                <input class="form-control" name="einsaetzeBilder" type="text" value={"einsatz_"+einsaetze_cnt+"_"+einsaetze_date}/>
             </div>
             <div class="col-xs-1"><label for="einsaetzeFormat">Format</label>
                 <select class="form-control format" name="einsaetzeFormat">
@@ -96,7 +105,7 @@ export default class Home extends React.Component {
                 </select>
             </div>
         </div>)
-        this.setState({einsaetzeBilder: einsaetzeBilder})
+        this.setState({einsaetzeBilder: einsaetzeBilder, einsaetze_cnt: einsaetze_cnt})
     }
 
     sendAktuelles = () => {
@@ -213,7 +222,7 @@ export default class Home extends React.Component {
 
     render() {
         var {aktuellesBild, aktuellesDatum, aktuellesFormat, aktuellesText} = this.state
-        var {einsaetzeDatum, einsaetzeArt, einsaetzeBilder, einsaetzeFormat, einsaetzeText, einsaetzeUhrzeit} = this.state
+        var {einsaetzeDatum, einsaetzeArt, einsaetzeBilder, einsaetzeFormat, einsaetzeText, einsaetzeUhrzeit, einsaetze_cnt, einsaetze_date} = this.state
         var {termineFWDatum, termineFWLeiter, termineFWProbe, termineFWUhrzeit} = this.state
         var {termineJFDatum, termineJFLeiter, termineJFProbe, termineJFUhrzeit} = this.state
 
@@ -284,7 +293,7 @@ export default class Home extends React.Component {
                                     <label for="ex1">Datum</label>
                                     <input class="form-control" id="ex1" type="date" value={einsaetzeDatum}
                                            onChange={(e) => {
-                                               this.handleChange(e, "einsaetzeDatum")
+                                               this.handleChangeEinsatzDate(e, "einsaetzeDatum")
                                            }}/>
                                 </div>
                                 <div class="col-xs-2">
@@ -304,7 +313,7 @@ export default class Home extends React.Component {
                                 </div>
                                 <div class="col-xs-3">
                                     <label for="einsaetzeBilder">Bild</label>
-                                    <input class="form-control" name="einsaetzeBilder" type="text"/>
+                                    <input class="form-control" name="einsaetzeBilder" type="text" value={"einsatz_"+0+"_"+einsaetze_date}/>
                                 </div>
                                 <div class="col-xs-1"><label for="einsaetzeFormat">Format</label>
                                     <select class="form-control format" name="einsaetzeFormat">
