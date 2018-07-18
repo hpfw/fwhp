@@ -110,7 +110,7 @@ router.post('/', function (req, res) {
         });
         var values = []
         //req.body.data.push(username)
-        //values.push(req.body.data)
+        values.push(req.body.data)
 
         con.connect(function (err) {
             if (err) throw err;
