@@ -20,54 +20,6 @@ var aktuelles = require('./routes/aktuelles');
 var kontakt = require('./routes/kontakt');
 var einsaetze = require('./routes/einsaetze');
 
-/*
-const fs = require('fs');
-
-var forceSsl = require('express-force-ssl');
-app.use(forceSsl);
-
-const options = {
-    key: fs.readFileSync('key.key'),
-    cert: fs.readFileSync('cert.cer')
-}; */
-
-/*
-app.use (function (req, res, next) {
-    console.log(req.secure)
-    if (req.secure) {
-        // request was via https, so do no special handling
-        console.log("https")
-        res.render('index');
-        //next();
-    } else {
-        console.log("http")
-        // request was via http, so redirect to https
-        //res.redirect('https://' + req.headers.host + req.url);
-        res.redirect('https://feuerwehr-waldburg.de/');
-    }
-});
-
-app.get('*', function(req, res) {
-    console.log("testaeatd")
-    res.redirect('https://feuerwehr-waldburg.de/');
-}) */
-/*
-var http       = require('http');
-var HTTP_PORT  = 80;
-var HTTPS_PORT = 443;
-
-app.set('port', HTTP_PORT);
-app.all('/*', function(req, res, next) {
-    if (req.secure) {
-        // request was via https, so do no special handling
-        next();
-    } else {
-        console.log("http")
-        // request was via http, so redirect to https
-        //res.redirect('https://' + req.headers.host + req.url);
-        res.redirect('https://feuerwehr-waldburg.de/');
-    }
-});*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -141,27 +93,6 @@ app.use(function (err, req, res, next) {
     res.render('index');
 });
 
-/*
-var http = require('http');
-http.createServer(app).listen(80);
-
-var https = require('https');
-https.createServer(options, app).listen(443);*/
-
-//app.listen(80);
-
-
-/*
-// set up a route to redirect http to https
-app.get('*', function(req, res) {
-    console.log("testaeatd")
-    res.redirect('https://' + req.headers.host + req.url);
-})*/
-
-/*
-http.createServer(app).listen(HTTP_PORT).on('listening', function() {
-    return console.log("HTTP to HTTPS redirect app launched.");
-});*/
 
 //app.listen(80);
 app.listen(443);
