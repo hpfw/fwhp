@@ -100,7 +100,7 @@ router.get('/', function (req, res) {
 
 
 router.post('/', function (req, res) {
-    user(req.sessionStore.sessions, function (username) {
+    //user(req.sessionStore.sessions, function (username) {
         var con = mysql.createConnection({
             host: "localhost",
             port: "3306",
@@ -120,7 +120,7 @@ router.post('/', function (req, res) {
                 res.send({status: result})
             });
         });
-    });
+    //});
 });
 
 module.exports = router;
