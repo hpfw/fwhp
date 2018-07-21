@@ -18,7 +18,6 @@ ReactDOM.render(
             <Route path="/" component={Layout}>
                 <IndexRoute component={Home}></IndexRoute>
                 <Route path="einsaetze" name="einsaetze" component={Einsaetze}></Route>
-                <Route path="login" name="login" component={Login}></Route>
             </Route>
         </Router>
     </Provider>,
