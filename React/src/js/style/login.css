@@ -13,6 +13,11 @@ body {
 .container_login {
     vertical-align: middle;
 
+    padding: 80px 300px;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
 
 .btn_login {
