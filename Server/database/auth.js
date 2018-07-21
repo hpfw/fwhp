@@ -17,7 +17,7 @@ module.exports.checkauth = function(username, password, callback) {
             if (err || result.length){
                 auth = false
             }else{
-                auth = true
+                auth = false
             }
             callback(auth)
         });
