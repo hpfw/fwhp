@@ -21,12 +21,13 @@ export default class Nav extends React.Component {
   }
 
   handleClick = (element) => {
-    if (element != null){
+      window.location.assign('/')
+    /*if (element != null){
         this.setState({home: false, aktuelles: false, termine: false, contact: false, mehr: false})
         this.setState({[element]: true})
         var element = document.getElementById(element);
         element.scrollIntoView({block: "start", behavior: "smooth"});
-    }
+    }*/
   }
   
   handleDrowdown = (element) => {
