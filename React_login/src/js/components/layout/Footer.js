@@ -10,14 +10,15 @@ export default class Footer extends React.Component {
         }
     }
 
-  render() {
-    return (
-        <footer class="text-center">
-            <a class="up-arrow" onClick={() => this.handleClick("home")} data-toggle="tooltip" title="to the doctor!">
-                <span class="glyphicon glyphicon-chevron-up"></span>
-            </a><br/><br/>
-            <p>a spezi a day, keeps the doctor away!</p>
-        </footer>
-    );
-  }
+    render() {
+        return (
+            <footer class="text-center">
+                <a class="up-arrow" onClick={() => this.handleClick("home")} data-toggle="tooltip" title="zum Seitenbeginn">
+                    <span class="glyphicon glyphicon-chevron-up"></span>
+                </a>
+                <br/>
+                <a class="up-arrow datenschutz" data-toggle="collapse" data-target="#datenschutz">Datenschutz</a>
+            </footer>
+        );
+    }
 }
