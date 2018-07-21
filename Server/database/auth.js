@@ -14,10 +14,10 @@ module.exports.checkauth = function(username, password, callback) {
         if (err) throw err;
 
         con.query("SELECT * FROM user WHERE username = " +  mysql.escape(username) + " AND password = " +  mysql.escape(password), function (err, result, fields) {
-            if (err || result.length){
+            if (err || result.length == 0){
                 auth = false
             }else{
-                auth = false
+                auth = true
             }
             callback(auth)
         });
