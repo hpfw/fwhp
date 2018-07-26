@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var app = require('.././app');
 var mysql = require('mysql');
-var date = new Date();
 var dateFormat = require('dateformat');
 var user = require('../database/user')
 
@@ -41,6 +40,7 @@ var wochentage = (param) => {
 }
 
 router.get('/', function (req, res) {
+    var date = new Date();
 
     var con = mysql.createConnection({
         host: "localhost",
