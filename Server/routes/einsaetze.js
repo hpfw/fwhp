@@ -116,7 +116,7 @@ router.post('/', upload.array('einsaetze', 12), function (req, res) {
 });
 
 
-router.post('/', function (req, res) {
+router.put('/', function (req, res) {
     //user(req.sessionStore.sessions, function (username) {
         var con = mysql.createConnection({
             host: "localhost",
