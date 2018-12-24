@@ -57,17 +57,17 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
     });
 
     var values = []
-    values.push(req.body.text)
-    values.push(req.files[0].filename)
-    values.push('20181224')
+   // values.push(req.body.text)
+   // values.push(req.files[0].filename)
+   // values.push('20181224')
 
 
-    //values.push('20181224', '04:32', 'test', 'Standard.jpg', 'test')
+    values.push('20181224', '04:32', 'test', 'Standard.jpg', 'test')
     //console.log(values)
 
 
 
-  /*  con.connect(function (err) {
+    con.connect(function (err) {
         res.send({status: err})
         if (err) throw err;
         con.query("INSERT INTO einsaetze (datum, uhrzeit, text, bilder, art) VALUES ?", [values], function (err, result) {
@@ -76,7 +76,7 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
             res.send({status: result})
         });
     });
-    */
+  /*
     con.connect(function (err) {
 
         if (err) throw err;
@@ -88,7 +88,7 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
             res.send({status: result})
         });
 
-    })
+    }) */
 });
 
 router.put('/', function (req, res) {
