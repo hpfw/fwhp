@@ -49,7 +49,7 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
       });
 
     //console.log("asdasddsad");
-    console.log(req.body.text, req.files[0].filename, req.body.datum);
+  //  console.log(req.body.text, req.files[0].filename, req.body.datum);
 
     // res.send({status: req.files})
 
@@ -70,7 +70,7 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
 
 
     values.push('2018-12-24', '04:32', 'test', 'Standard.jpg', 'test')
-    console.log(values)
+    //console.log(values)
 
 
 
