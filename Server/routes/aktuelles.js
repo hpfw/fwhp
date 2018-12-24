@@ -48,7 +48,7 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
         if ( err ) console.log('ERROR: ' + err);
       });
 
-    var con = mysql.createConnection({
+ /*   var con = mysql.createConnection({
         host: "localhost",
         port: "3306",
         user: "feuerweh",
@@ -75,8 +75,29 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
             con.end();
             res.send({status: result})
         });
+    }); */
+
+    var con = mysql.createConnection({
+        host: "localhost",
+        port: "3306",
+        user: "feuerweh",
+        password: "Feuerwehr!?123FFW!",
+        database: "feuerweh_"
+    });
+
+    con.connect(function (err) {
+        if (err) throw err;
+
+        con.query("SELECT * FROM einsaetze ORDER BY datum DESC", function (err, result) {
+            if (err) throw err;
+            con.end();
+            sortData(result, function (data) {
+                res.send({status: data});
+            })
+        });
     });
   /*
+
     con.connect(function (err) {
 
         if (err) throw err;

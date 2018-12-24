@@ -112,8 +112,6 @@ router.post('/', function (req, res) {
         //req.body.data.push(username)
         values.push(req.body.data)
 
-        console.log(req.body.data)
-
         con.connect(function (err) {
             if (err) throw err;
             con.query("INSERT INTO einsaetze (datum, uhrzeit, text, bilder, art) VALUES ?", [values], function (err, result) {
