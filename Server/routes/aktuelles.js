@@ -70,6 +70,7 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
     con.connect(function (err) {
         if (err) throw err;
         con.query("INSERT INTO einsaetze (datum, uhrzeit, text, bilder, art) VALUES ?", [values], function (err, result) {
+            res.send({status: err})
             if (err) throw err;
             con.end();
             res.send({status: result})
