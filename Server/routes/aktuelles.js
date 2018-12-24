@@ -63,8 +63,8 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
         password: "Feuerwehr!?123FFW!",
         database: "feuerweh_"
     });
-    var values = []
-    values.push(req.body.data)
+  //  var values = []
+  //  values.push(req.body.data)
 
     con.connect(function (err) {
         if (err) throw err;

@@ -87,7 +87,7 @@ router.get('/', function (req, res) {
     con.connect(function (err) {
         if (err) throw err;
 
-        con.query("SELECT * FROM einsaetze ORDER BY datum DESC", function (err, result, fields) {
+        con.query("SELECT * FROM einsaetze ORDER BY datum DESC", function (err, result) {
             if (err) throw err;
             con.end();
             sortData(result, function (data) {
