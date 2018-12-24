@@ -69,7 +69,7 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
     //values.push(req.body.datum)
 
 
-    values.push('2018-12-24', '04:32', 'test', 'Standard.jpg', 'test')
+    values.push('20181224', '04:32', 'test', 'Standard.jpg', 'test')
     //console.log(values)
 
 
