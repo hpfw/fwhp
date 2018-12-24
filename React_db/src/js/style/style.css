@@ -323,6 +323,11 @@ textarea {
     font-size: 1em !important;
 }
 
+.progress{
+    height: 34px !important;
+    border: 0px !important;
+}
+
 
 
 

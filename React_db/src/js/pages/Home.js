@@ -29,6 +29,7 @@ export default class Home extends React.Component {
             aktuellesBild: "",
             aktuellesText: "",
             upload: 0,
+            uploadDisp: "none",
 
             einsaetzeDatum: "",
             einsaetzeUhrzeit: "",
@@ -119,7 +120,8 @@ export default class Home extends React.Component {
             aktuellesBild: "",
             aktuellesDatum: dateFormat(date, "yyyy-mm-dd"),
             aktuellesText: "",
-            upload: 0
+            upload: 0,
+            uploadDisp: "none"
         })
     }
 
@@ -135,7 +137,7 @@ export default class Home extends React.Component {
                 onUploadProgress: progressEvent => {
                     console.log(progressEvent.loaded / progressEvent.total)
                     upload = progressEvent.loaded / progressEvent.total * 100
-                    this.setState({upload: upload.toFixed(0)})
+                    this.setState({upload: upload.toFixed(0), uploadDisp: ""})
                 }
             }).then(function (response) {
                 //console.log("bild res top", response)
@@ -239,7 +241,7 @@ export default class Home extends React.Component {
         var {einsaetzeDatum, einsaetzeArt, einsaetzeBilder, einsaetzeFormat, einsaetzeText, einsaetzeUhrzeit, einsaetze_cnt, einsaetze_date, einsatzStdBild} = this.state
         var {termineFWDatum, termineFWLeiter, termineFWProbe, termineFWUhrzeit} = this.state
         var {termineJFDatum, termineJFLeiter, termineJFProbe, termineJFUhrzeit} = this.state
-        var {upload} = this.state
+        var {upload, uploadDisp} = this.state
 
         return (
             <div id="home" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -276,10 +278,11 @@ export default class Home extends React.Component {
 
                                            }}/>
                                 </div>
-                                <div className="col-xs-5">
+                                <div className="col-xs-5" style = {{display:uploadDisp}}>
+                                    <label htmlFor="aktuellesUpload">Upload</label>
                                     <div className="progress">
                                         <div className="progress-bar progress-bar-striped active" role="progressbar"
-                                             aria-valuenow={upload} aria-valuemin="0" aria-valuemax="100" style={"width:"+{upload}+"%"}>
+                                             aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style={{width:upload+"%"}}>
                                             {upload}%
                                         </div>
                                     </div>
