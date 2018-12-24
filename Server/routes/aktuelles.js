@@ -10,7 +10,7 @@ var user = require('../database/user');
 var multer = require('multer')
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'uploads/')
+        cb(null, 'public/images/aktuelles/')
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname) //Appending extension
