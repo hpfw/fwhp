@@ -113,11 +113,17 @@ export default class Home extends React.Component {
         this.setState({einsaetzeBilder: einsaetzeBilder, einsaetze_cnt: einsaetze_cnt})
     }
 
+    insertAktuelles = () => {
+        var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
+        this.props.dispatch(aktuelles(aktuellesText, aktuellesBild, aktuellesDatum));
+    }
+
     sendAktuelles = () => {
+        var self = this
         var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
         var formData = new FormData();
-       // formData.set('datum', aktuellesDatum)
-      //  formData.set('text', aktuellesText)
+        // formData.set('datum', aktuellesDatum)
+        //  formData.set('text', aktuellesText)
         formData.append("aktuelles", aktuellesBild);
 
         axios.post(config.BASE_URL + 'aktuelles', formData, {
@@ -126,11 +132,11 @@ export default class Home extends React.Component {
             }
         }).then(function (response) {
             console.log("bild res top", response)
-            props.dispatch(aktuelles(aktuellesText, aktuellesBild.name, aktuellesDatum))
+            self.insertAktuelles()
             console.log("fuck you ")
         }).catch(function (error) {
             console.log("bild res err", error);
-        }).bind();
+        })
         /*
         var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
 
