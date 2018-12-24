@@ -120,7 +120,7 @@ export class Home extends React.Component {
                             <div class="col-sm-6 col-xs-12">
                                 <div class="panel panel-default card card-default text-center">
                                     <div class="panel-heading card-heading">
-                                        <h1>Jugendfeuerwehr</h1>
+                                        <h1 class="trennung">Jugendfeuerwehr</h1>
                                     </div>
                                     <div class="panel-body card-body">
                                         <p><strong>Probeleiter:</strong> {termine_jf.leiter}</p>

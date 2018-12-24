@@ -44,13 +44,14 @@ router.get('/', function (req, res) {
 router.post('/', upload.array('aktuelles', 12), function (req, res) {
 
 
-    // fs.rename('uploads/'+req.files[0].filename, 'uploads/'+req.files[0].originalname, function(err) {
-    //    if ( err ) console.log('ERROR: ' + err);
-    //  });
+     fs.rename('uploads/'+req.files[0].filename, 'uploads/'+req.files[0].originalname, function(err) {
+        if ( err ) console.log('ERROR: ' + err);
+      });
 
-    console.log("asdasddsad");
+    //console.log("asdasddsad");
+  //  console.log(req.body.data);
     console.log(req.body);
-    console.log(req.files);
+    //console.log(req);
 
     // res.send({status: req.files})
 

@@ -116,7 +116,9 @@ export default class Home extends React.Component {
     sendAktuelles = () => {
         var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
         var formData = new FormData();
-        formData.append("aktuelles", aktuellesBild, aktuellesBild.name);
+        formData.set('datum', aktuellesDatum)
+        formData.set('text', aktuellesText)
+        formData.append("aktuelles", aktuellesBild);
 
         axios.post(config.BASE_URL + 'aktuelles', formData, {
             onUploadProgress: progressEvent => {

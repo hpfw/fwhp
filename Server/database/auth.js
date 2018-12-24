@@ -1,8 +1,9 @@
 var mysql = require('mysql');
 
 module.exports.checkauth = function(username, password, callback) {
-    //callback(false)
-    var auth = false
+    callback(true) //for local testing
+
+/*    var auth = false
     var con = mysql.createConnection({
         host: "localhost",
         port: "3306",
@@ -21,5 +22,5 @@ module.exports.checkauth = function(username, password, callback) {
             }
             callback(auth)
         });
-    });
+    }); */
 }
