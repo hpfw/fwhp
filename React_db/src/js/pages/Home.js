@@ -126,7 +126,9 @@ export default class Home extends React.Component {
             }
         }).then(function (response) {
             console.log(response)
-        })
+        }).catch(function (error) {
+            console.log(error);
+        });
         /*
         var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
 
