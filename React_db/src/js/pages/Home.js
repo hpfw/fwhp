@@ -126,11 +126,11 @@ export default class Home extends React.Component {
             }
         }).then(function (response) {
             console.log("bild res top", response)
-            this.props.dispatch(aktuelles(aktuellesText, aktuellesBild.name, aktuellesDatum))
+            props.dispatch(aktuelles(aktuellesText, aktuellesBild.name, aktuellesDatum))
             console.log("fuck you ")
         }).catch(function (error) {
             console.log("bild res err", error);
-        });
+        }).bind();
         /*
         var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
 

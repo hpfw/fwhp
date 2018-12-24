@@ -1,4 +1,5 @@
 // dev
+/*
 var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 var path = require('path');
@@ -41,7 +42,7 @@ module.exports = {
     ],
 };
 
-/*
+*/
 // prod
 var path = require('path');
 const webpack = require('webpack');
@@ -93,4 +94,4 @@ module.exports = {
         new webpack.optimize.LimitChunkCountPlugin({maxChunks: 15}),
     ],
 };
-*/
+
