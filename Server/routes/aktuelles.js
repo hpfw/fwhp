@@ -57,7 +57,6 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
     });
 
     con.connect(function (err) {
-        res.send({data: err})
         if (err) throw err;
 
         con.query("SELECT * FROM einsaetze ORDER BY datum DESC", function (err, result) {
