@@ -328,6 +328,10 @@ textarea {
     border: 0px !important;
 }
 
+.progress-bar{
+    line-height: 34px !important;
+}
+
 
 
 
