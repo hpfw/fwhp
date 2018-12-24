@@ -116,8 +116,8 @@ export default class Home extends React.Component {
     sendAktuelles = () => {
         var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
         var formData = new FormData();
-        formData.set('datum', aktuellesDatum)
-        formData.set('text', aktuellesText)
+       // formData.set('datum', aktuellesDatum)
+      //  formData.set('text', aktuellesText)
         formData.append("aktuelles", aktuellesBild);
 
         axios.post(config.BASE_URL + 'aktuelles', formData, {
@@ -126,6 +126,7 @@ export default class Home extends React.Component {
             }
         }).then(function (response) {
             console.log(response)
+            this.props.dispatch(aktuelles(aktuellesText, aktuellesBild.name, aktuellesDatum))
         }).catch(function (error) {
             console.log(error);
         });
