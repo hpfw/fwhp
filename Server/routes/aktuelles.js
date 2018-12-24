@@ -64,12 +64,25 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
         database: "feuerweh_"
     });
     var values = []
-    values.push(req.body.text)
-    values.push(req.files[0].filename)
-    values.push(req.body.datum)
+    //values.push(req.body.text)
+    //values.push(req.files[0].filename)
+    //values.push(req.body.datum)
 
+
+    values.push('2018-12-24', '04:32', 'test', 'Standard.jpg', 'test')
     console.log(values)
 
+
+
+    con.connect(function (err) {
+        if (err) throw err;
+        con.query("INSERT INTO einsaetze (datum, uhrzeit, text, bilder, art) VALUES ?", [values], function (err, result) {
+            if (err) throw err;
+            con.end();
+            res.send({status: result})
+        });
+    });
+    /*
     con.connect(function (err) {
         if (err) throw err;
 
@@ -81,7 +94,7 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
             res.send({status: result})
         });
 
-    })
+    }) */
 });
 
 router.put('/', function (req, res) {
