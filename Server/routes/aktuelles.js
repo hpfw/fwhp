@@ -78,13 +78,13 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
     });
     */
     con.connect(function (err) {
+
         if (err) throw err;
 
         con.query("INSERT INTO aktuelles (text, bild, datum ) VALUES ?", [values], function (err, result) {
+            res.send({status: err})
             if (err) throw err;
             con.end();
-
-            //res.send({status: req.sessionStore.sessions})
             res.send({status: result})
         });
 
