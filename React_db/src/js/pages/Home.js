@@ -197,10 +197,9 @@ export default class Home extends React.Component {
             var bilder = []
             for (var i = 0; i < einsatzBild.length; i++) {
                 bilder.push(einsatzBild[i])
+                formData.append("einsaetze", einsatzBild[i]);
             }
             if (bilder.length != 0) {
-                formData.append("einsaetze", bilder);
-
                 axios.post(config.BASE_URL + 'einsaetze', formData, {
                     onUploadProgress: progressEvent => {
                         console.log(progressEvent.loaded / progressEvent.total)
