@@ -44,10 +44,10 @@ router.get('/', function (req, res) {
 router.post('/', upload.array('aktuelles', 12), function (req, res) {
 
 
-     fs.rename('uploads/'+req.files[0].filename, 'uploads/'+req.files[0].originalname, function(err) {
+     fs.rename('public/images/aktuelles/'+req.files[0].filename, 'public/images/aktuelles/'+req.files[0].originalname, function(err) {
         if ( err ) console.log('ERROR: ' + err);
      });
-     res.send();
+     res.send({status: "0"});
 
  /*   var con = mysql.createConnection({
         host: "localhost",

@@ -4,10 +4,8 @@ import {connect} from "react-redux"
 import {termineFW} from "../actions/termine_fw_action"
 import {termineJF} from "../actions/termine_jf_action"
 import {aktuelles} from "../actions/aktuelles_action"
-import {aktuellesImage} from "../actions/aktuellesImage"
 import {kontakt} from "../actions/kontakt_action"
 import {einsaetze} from "../actions/einsaetze_action"
-import LoadingBar from 'react-redux-loading-bar'
 import axios from 'axios';
 import config from '../../config/config'
 
@@ -115,48 +113,42 @@ export default class Home extends React.Component {
 
     insertAktuelles = () => {
         var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
-        this.props.dispatch(aktuelles(aktuellesText, aktuellesBild, aktuellesDatum));
-    }
-
-    sendAktuelles = () => {
-        var self = this
-        var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
-        var formData = new FormData();
-        // formData.set('datum', aktuellesDatum)
-        //  formData.set('text', aktuellesText)
-        formData.append("aktuelles", aktuellesBild);
-
-        axios.post(config.BASE_URL + 'aktuelles', formData, {
-            onUploadProgress: progressEvent => {
-                console.log(progressEvent.loaded / progressEvent.total)
-            }
-        }).then(function (response) {
-            console.log("bild res top", response)
-            self.insertAktuelles()
-            console.log("fuck you ")
-        }).catch(function (error) {
-            console.log("bild res err", error);
-        })
-        /*
-        var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
-
-        if (aktuellesBild != "" && aktuellesDatum != "" && aktuellesText != "") {
-            var formData = new FormData();
-            formData.append("aktuelles", aktuellesBild, aktuellesBild.name);
-
-            this.props.dispatch(aktuellesImage(aktuellesText, aktuellesBild.name, aktuellesDatum, formData));
+        this.props.dispatch(aktuelles(aktuellesText, aktuellesBild, aktuellesDatum), () => {
             this.setState({
                 aktuellesBild: "",
                 aktuellesDatum: dateFormat(date, "yyyy-mm-dd"),
                 aktuellesText: ""
             })
-            document.getElementById("errorAktuelles").style.display = "none";
-            document.getElementById("successAktuelles").style.display = "inline";
+        });
+    }
+
+    sendAktuelles = () => {
+        var self = this
+        var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
+
+        if (aktuellesBild != "" && aktuellesDatum != "" && aktuellesText != "") {
+            var formData = new FormData();
+            formData.append("aktuelles", aktuellesBild);
+
+            axios.post(config.BASE_URL + 'aktuelles', formData, {
+                onUploadProgress: progressEvent => {
+                    console.log(progressEvent.loaded / progressEvent.total)
+                }
+            }).then(function (response) {
+                //console.log("bild res top", response)
+                self.insertAktuelles()
+                document.getElementById("errorAktuelles").style.display = "none";
+                document.getElementById("successAktuelles").style.display = "inline";
+            }).catch(function (error) {
+                //console.log("bild res err", error);
+                document.getElementById("errorAktuelles").style.display = "inline";
+                document.getElementById("successAktuelles").style.display = "none";
+            })
         } else {
             document.getElementById("errorAktuelles").style.display = "inline";
             document.getElementById("successAktuelles").style.display = "none";
         }
-        */
+
     }
     sendEinsaetze = () => {
         var {einsaetzeDatum, einsaetzeArt, einsaetzeText, einsaetzeUhrzeit} = this.state
