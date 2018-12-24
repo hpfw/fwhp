@@ -49,9 +49,7 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
       });
 
     //console.log("asdasddsad");
-  //  console.log(req.body.data);
-    console.log(req.body);
-    //console.log(req);
+    console.log(req.body.text, req.files[0].filename, req.body.datum);
 
     // res.send({status: req.files})
 
@@ -71,7 +69,7 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
     con.connect(function (err) {
         if (err) throw err;
 
-        con.query("INSERT INTO aktuelles (text, bild, datum ) VALUES ?", [values], function (err, result) {
+        con.query("INSERT INTO aktuelles (text, bild, datum ) VALUES ?, ?, ?", req.body.text, req.files[0].filename, req.body.datum, function (err, result) {
             if (err) throw err;
             con.end();
 
