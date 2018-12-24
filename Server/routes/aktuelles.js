@@ -44,9 +44,9 @@ router.get('/', function (req, res) {
 router.post('/', upload.array('aktuelles', 12), function (req, res) {
 
 
-     fs.rename('uploads/'+req.files[0].filename, 'uploads/'+req.files[0].originalname, function(err) {
-        if ( err ) console.log('ERROR: ' + err);
-      });
+    // fs.rename('uploads/'+req.files[0].filename, 'uploads/'+req.files[0].originalname, function(err) {
+   //     if ( err ) console.log('ERROR: ' + err);
+   //   });
 
  /*   var con = mysql.createConnection({
         host: "localhost",
@@ -86,10 +86,10 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
     });
 
     con.connect(function (err) {
-       // if (err) throw err;
+        if (err) throw err;
 
         con.query("SELECT * FROM einsaetze ORDER BY datum DESC", function (err, result) {
-           // if (err) throw err;
+            if (err) throw err;
             con.end();
             sortData(result, function (data) {
                 res.send({status: data});
