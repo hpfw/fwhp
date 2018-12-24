@@ -124,6 +124,8 @@ export default class Home extends React.Component {
             onUploadProgress: progressEvent => {
                 console.log(progressEvent.loaded / progressEvent.total)
             }
+        }).then(function (response) {
+            console.log(response)
         })
         /*
         var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
