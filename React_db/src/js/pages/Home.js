@@ -113,7 +113,7 @@ export default class Home extends React.Component {
 
     insertAktuelles = () => {
         var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
-        this.props.dispatch(aktuelles(aktuellesText, aktuellesBild, aktuellesDatum), () => {
+        this.props.dispatch(aktuelles(aktuellesText, aktuellesBild.name, aktuellesDatum), () => {
             this.setState({
                 aktuellesBild: "",
                 aktuellesDatum: dateFormat(date, "yyyy-mm-dd"),
