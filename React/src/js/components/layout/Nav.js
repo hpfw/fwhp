@@ -13,6 +13,7 @@ export default class Nav extends React.Component {
             contact: false,
             mehr: false,
             einsaetze: false,
+            fahrzeuge: false,
             login: false,
         };
     }
@@ -31,6 +32,7 @@ export default class Nav extends React.Component {
                 contact: false,
                 mehr: false,
                 einsaetze: false,
+                fahrzeuge: false,
                 login: false,
             })
             this.setState({[element]: true})
@@ -48,6 +50,7 @@ export default class Nav extends React.Component {
                 contact: false,
                 mehr: true,
                 einsaetze: false,
+                fahrzeuge: false,
                 login: false,
             })
             this.setState({[element]: true})
@@ -63,6 +66,7 @@ export default class Nav extends React.Component {
                 contact: false,
                 mehr: true,
                 einsaetze: false,
+                fahrzeuge: false,
                 login: false,
             })
             this.setState({[element]: true}, () => window.location.assign('/login'));
@@ -76,6 +80,7 @@ export default class Nav extends React.Component {
         const home = location.pathname === "/" ? "active" : "";
         const navClass = collapsed ? "collapse" : "";
         const einsaetze = location.pathname.match(/^\/einsaetze/) ? "active" : "";
+        const fahrzeuge = location.pathname.match(/^\/fahrzeuge/) ? "active" : "";
 
 
         return (
@@ -108,6 +113,9 @@ export default class Nav extends React.Component {
                                     <li class={this.state.einsaetze == true ? ' mouse_curser active' : ' inactive mouse_curser'}
                                         onClick={() => this.handleDrowdown("einsaetze")}><Link to="einsaetze">
                                         Einsätze</Link></li>
+                                    <li class={this.state.fahrzeuge == true ? ' mouse_curser active' : ' inactive mouse_curser'}
+                                        onClick={() => this.handleDrowdown("fahrzeuge")}><Link to="fahrzeuge">
+                                        Fahrzeuge</Link></li>
                                     <li class={this.state.login == true ? ' mouse_curser active' : 'inactive mouse_curser'}
                                         onClick={() => this.handleLogin("login")}><Link to="login"> Login</Link></li>
                                 </ul>
