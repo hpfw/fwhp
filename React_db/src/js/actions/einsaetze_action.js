@@ -23,10 +23,10 @@ export function einsaetzeRejected(error) {
 export function einsaetze(text, bilder, datum, uhrzeit, art) {
     return (dispatch) => {
         dispatch(fetchEinsaetze());
-        console.log("test")
+       // console.log("test")
         console.log(text, bilder, datum, uhrzeit, art)
         return fetch(config.BASE_URL + 'einsaetze', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

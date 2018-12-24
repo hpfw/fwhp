@@ -5,6 +5,18 @@ var mysql = require('mysql');
 var dateFormat = require('dateformat');
 var user = require('../database/user')
 
+var multer = require('multer')
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/images/einsaetze/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname) //Appending extension
+    }
+})
+
+var upload = multer({storage: storage});
+var fs = require('fs');
 
 var monat = (param) => {
     var monat;
@@ -96,6 +108,11 @@ router.get('/', function (req, res) {
         });
     });
 
+});
+
+
+router.post('/', upload.array('einsaetze', 12), function (req, res) {
+    res.send({status: "0"});
 });
 
 
