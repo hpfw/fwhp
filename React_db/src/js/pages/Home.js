@@ -28,6 +28,7 @@ export default class Home extends React.Component {
             aktuellesDatum: "",
             aktuellesBild: "",
             aktuellesText: "",
+            upload: 0,
 
             einsaetzeDatum: "",
             einsaetzeUhrzeit: "",
@@ -113,18 +114,18 @@ export default class Home extends React.Component {
 
     insertAktuelles = () => {
         var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
-        this.props.dispatch(aktuelles(aktuellesText, aktuellesBild.name, aktuellesDatum), () => {
-            this.setState({
-                aktuellesBild: "",
-                aktuellesDatum: dateFormat(date, "yyyy-mm-dd"),
-                aktuellesText: ""
-            })
-        });
+        this.props.dispatch(aktuelles(aktuellesText, aktuellesBild.name, aktuellesDatum));
+        this.setState({
+            aktuellesBild: "",
+            aktuellesDatum: dateFormat(date, "yyyy-mm-dd"),
+            aktuellesText: "",
+            upload: 0
+        })
     }
 
     sendAktuelles = () => {
         var self = this
-        var {aktuellesBild, aktuellesDatum, aktuellesText} = this.state
+        var {aktuellesBild, aktuellesDatum, aktuellesText, upload} = this.state
 
         if (aktuellesBild != "" && aktuellesDatum != "" && aktuellesText != "") {
             var formData = new FormData();
@@ -133,6 +134,8 @@ export default class Home extends React.Component {
             axios.post(config.BASE_URL + 'aktuelles', formData, {
                 onUploadProgress: progressEvent => {
                     console.log(progressEvent.loaded / progressEvent.total)
+                    upload = progressEvent.loaded / progressEvent.total * 100
+                    this.setState({upload: upload.toFixed(0)})
                 }
             }).then(function (response) {
                 //console.log("bild res top", response)
@@ -236,6 +239,7 @@ export default class Home extends React.Component {
         var {einsaetzeDatum, einsaetzeArt, einsaetzeBilder, einsaetzeFormat, einsaetzeText, einsaetzeUhrzeit, einsaetze_cnt, einsaetze_date, einsatzStdBild} = this.state
         var {termineFWDatum, termineFWLeiter, termineFWProbe, termineFWUhrzeit} = this.state
         var {termineJFDatum, termineJFLeiter, termineJFProbe, termineJFUhrzeit} = this.state
+        var {upload} = this.state
 
         return (
             <div id="home" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -264,13 +268,21 @@ export default class Home extends React.Component {
                                                this.handleChange(e, "aktuellesDatum")
                                            }}/>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-5">
                                     <label for="aktuellesBild">Bild</label>
                                     <input class="form-control" id="aktuellesBild" type="file"
                                            onChange={(e) => {
                                                this.handleChangeImage(e, "aktuellesBild")
 
                                            }}/>
+                                </div>
+                                <div className="col-xs-5">
+                                    <div className="progress">
+                                        <div className="progress-bar progress-bar-striped active" role="progressbar"
+                                             aria-valuenow={upload} aria-valuemin="0" aria-valuemax="100" style={"width:"+{upload}+"%"}>
+                                            {upload}%
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-xs-12">
                                     <label for="aktuellesText">Text</label>
