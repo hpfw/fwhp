@@ -63,13 +63,17 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
         password: "Feuerwehr!?123FFW!",
         database: "feuerweh_"
     });
-  //  var values = []
-  //  values.push(req.body.data)
+    var values = []
+    values.push(req.body.text)
+    values.push(req.files[0].filename)
+    values.push(req.body.datum)
+
+    console.log(values)
 
     con.connect(function (err) {
         if (err) throw err;
 
-        con.query("INSERT INTO aktuelles (text, bild, datum ) VALUES ?, ?, ?", req.body.text, req.files[0].filename, req.body.datum, function (err, result) {
+        con.query("INSERT INTO aktuelles (text, bild, datum ) VALUES ?", [values], function (err, result) {
             if (err) throw err;
             con.end();
 
