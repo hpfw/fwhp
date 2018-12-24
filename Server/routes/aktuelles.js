@@ -92,7 +92,7 @@ router.post('/', upload.array('aktuelles', 12), function (req, res) {
     }) */
 });
 
-router.post('/', function (req, res) {
+router.put('/', function (req, res) {
 
     var con = mysql.createConnection({
         host: "localhost",
@@ -117,7 +117,7 @@ router.post('/', function (req, res) {
     })
 });
 
-router.put('/', function (req, res) {
+/*router.put('/', function (req, res) {
     res.send({status: req.body.data})
     /* res.send({status: req.cookies})
      user(req.sessionStore.sessions, function (username) {
@@ -144,7 +144,7 @@ router.put('/', function (req, res) {
      });
      });
      })*/
-});
+//});
 
 
 module.exports = router;

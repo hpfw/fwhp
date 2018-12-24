@@ -24,7 +24,7 @@ export function aktuelles(text, bildname, datum) {
     return (dispatch) => {
         dispatch(fetchAktuelles());
         return fetch(config.BASE_URL + 'aktuelles', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
