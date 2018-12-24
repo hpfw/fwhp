@@ -36,8 +36,9 @@ export default class Home extends React.Component {
             einsaetzeArt: "",
             einsaetzeFormat: ".jpg",
             einsaetzeText: "",
+            einsatzStdBild: "Standard",
 
-            einsaetze_cnt : 0,
+            einsaetze_cnt: 0,
             einsaetze_date: '01022018',
 
             termineFWDatum: "",
@@ -65,7 +66,10 @@ export default class Home extends React.Component {
 
     handleChangeEinsatzDate = (e, name) => {
         var date = e.target.value
-        this.setState({[name]: e.target.value, einsaetze_date: (date.substring(date.length-2, date.length) + date.substring(date.length-5, date.length-3) + date.substring(date.length-10, date.length-6))})
+        this.setState({
+            [name]: e.target.value,
+            einsaetze_date: (date.substring(date.length - 2, date.length) + date.substring(date.length - 5, date.length - 3) + date.substring(date.length - 10, date.length - 6))
+        })
     }
 
     handleChangeImage = (e, name) => {
@@ -96,7 +100,8 @@ export default class Home extends React.Component {
             <div class="col-xs-7"></div>
             <div class="col-xs-3">
                 <label for="einsaetzeBilder">Bild</label>
-                <input class="form-control" name="einsaetzeBilder" type="text" value={"einsatz_"+einsaetze_cnt+"_"+einsaetze_date}/>
+                <input class="form-control" name="einsaetzeBilder" type="text"
+                       value={"einsatz_" + einsaetze_cnt + "_" + einsaetze_date}/>
             </div>
             <div class="col-xs-1"><label for="einsaetzeFormat">Format</label>
                 <select class="form-control format" name="einsaetzeFormat">
@@ -113,7 +118,7 @@ export default class Home extends React.Component {
         var formData = new FormData();
         formData.append("aktuelles", aktuellesBild, aktuellesBild.name);
 
-        axios.post(config.BASE_URL+'aktuelles', formData, {
+        axios.post(config.BASE_URL + 'aktuelles', formData, {
             onUploadProgress: progressEvent => {
                 console.log(progressEvent.loaded / progressEvent.total)
             }
@@ -222,16 +227,17 @@ export default class Home extends React.Component {
 
     render() {
         var {aktuellesBild, aktuellesDatum, aktuellesFormat, aktuellesText} = this.state
-        var {einsaetzeDatum, einsaetzeArt, einsaetzeBilder, einsaetzeFormat, einsaetzeText, einsaetzeUhrzeit, einsaetze_cnt, einsaetze_date} = this.state
+        var {einsaetzeDatum, einsaetzeArt, einsaetzeBilder, einsaetzeFormat, einsaetzeText, einsaetzeUhrzeit, einsaetze_cnt, einsaetze_date, einsatzStdBild} = this.state
         var {termineFWDatum, termineFWLeiter, termineFWProbe, termineFWUhrzeit} = this.state
         var {termineJFDatum, termineJFLeiter, termineJFProbe, termineJFUhrzeit} = this.state
 
         return (
             <div id="home" data-spy="scroll" data-target=".navbar" data-offset="50">
-                <div class="parallax">
-                    <LoadingBar style={{backgroundColor: 'blue', height: '5px'}}/>
-                    <div class="container">
-                        <h2>Aktuelles</h2>
+
+
+                <div id="aktuelles" className="bg-1 black">
+                    <div className="container text-center">
+                        <h3>AKTUELLES</h3>
                         <form>
                             <div class="form-group row">
                                 <div id="errorAktuelles" class="error col-xs-12">
@@ -276,7 +282,12 @@ export default class Home extends React.Component {
                                 </div>
                             </div>
                         </form>
-                        <h2>Einsätze</h2>
+                    </div>
+                </div>
+
+                <div id="einsaetze" className="bg-1 white">
+                    <div className="container text-center">
+                        <h3>Einsätze</h3>
                         <form>
                             <div class="form-group row">
                                 <div id="errorEinsaetze" class="error col-xs-12">
@@ -313,7 +324,11 @@ export default class Home extends React.Component {
                                 </div>
                                 <div class="col-xs-3">
                                     <label for="einsaetzeBilder">Bild</label>
-                                    <input class="form-control" name="einsaetzeBilder" type="text" value={"einsatz_"+0+"_"+einsaetze_date}/>
+                                    <input class="form-control" name="einsaetzeBilder" type="text"
+                                           value={einsatzStdBild}
+                                           onChange={(e) => {
+                                               this.handleChange(e, "einsatzStdBild")
+                                           }}/>
                                 </div>
                                 <div class="col-xs-1"><label for="einsaetzeFormat">Format</label>
                                     <select class="form-control format" name="einsaetzeFormat">
@@ -350,7 +365,12 @@ export default class Home extends React.Component {
                                 </div>
                             </div>
                         </form>
-                        <h2>Termine Aktive Feuerwehr</h2>
+                    </div>
+                </div>
+
+                <div id="termineaktive" className="bg-1 black">
+                    <div className="container text-center">
+                        <h3>Termine Aktive Feuerwehr</h3>
                         <form>
                             <div class="form-group row">
                                 <div id="errorTermineFW" class="error col-xs-12">
@@ -403,8 +423,12 @@ export default class Home extends React.Component {
                                 </div>
                             </div>
                         </form>
-                        <br/>
-                        <h2>Termine Jugendfeuerwehr</h2>
+                    </div>
+                </div>
+
+                <div id="terminejf" className="bg-1 white">
+                    <div className="container text-center">
+                        <h3>Termine Jugendfeuerwehr</h3>
                         <form>
                             <div class="form-group row">
                                 <div id="errorTermineJF" class="error col-xs-12">
