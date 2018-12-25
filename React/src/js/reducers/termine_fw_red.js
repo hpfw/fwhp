@@ -1,10 +1,10 @@
 export default function reducer(state={    // reducer schaut Komponenten an, die mit ihm verbunden sind
                                     termine: {
-                                        probe: "",
-                                        datum: "",
-                                        uhrzeit: "",
-                                        leiter: "",
-                                        tag: "",
+                                        probe: "-",
+                                        datum: "-",
+                                        uhrzeit: "-",
+                                        leiter: "-",
+                                        tag: "-",
                                     },
                                     fetching: false,
                                     fetched: false,

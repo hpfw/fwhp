@@ -24,7 +24,7 @@ export function einsaetze(text, bilder, datum, uhrzeit, art) {
     return (dispatch) => {
         dispatch(fetchEinsaetze());
        // console.log("test")
-        console.log(text, bilder, datum, uhrzeit, art)
+        //console.log(text, bilder, datum, uhrzeit, art)
         return fetch(config.BASE_URL + 'einsaetze', {
             method: 'PUT',
             headers: {

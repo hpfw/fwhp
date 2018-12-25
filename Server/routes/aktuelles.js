@@ -117,34 +117,5 @@ router.put('/', function (req, res) {
     })
 });
 
-/*router.put('/', function (req, res) {
-    res.send({status: req.body.data})
-    /* res.send({status: req.cookies})
-     user(req.sessionStore.sessions, function (username) {
-     var con = mysql.createConnection({
-     host: "localhost",
-     port: "3306",
-     user: "feuerweh",
-     password: "Feuerwehr!?123FFW!",
-     database: "feuerweh_"
-     });
-     var values = []
-     req.body.data.push(username)
-     values.push(req.body.data)
-
-     con.connect(function (err) {
-     if (err) throw err;
-
-     con.query("INSERT INTO aktuelles (text, bild, datum, username) VALUES ?", [values], function (err, result) {
-     if (err) throw err;
-     con.end();
-
-     res.send({status: req.sessionStore.sessions})
-     res.send({status: result})
-     });
-     });
-     })*/
-//});
-
 
 module.exports = router;

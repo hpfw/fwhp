@@ -80,7 +80,7 @@ export default class Home extends React.Component {
     }
 
     handleChangeEinsatzImage = (e, name) => {
-        console.log(e.target.files)
+        //console.log(e.target.files)
         this.setState({[name]: e.target.files})
 
     }
@@ -144,7 +144,7 @@ export default class Home extends React.Component {
 
             axios.post(config.BASE_URL + 'aktuelles', formData, {
                 onUploadProgress: progressEvent => {
-                    console.log(progressEvent.loaded / progressEvent.total)
+                   // console.log(progressEvent.loaded / progressEvent.total)
                     upload = progressEvent.loaded / progressEvent.total * 100
                     this.setState({upload: upload.toFixed(0), uploadDisp: ""})
                 }
@@ -202,7 +202,7 @@ export default class Home extends React.Component {
             if (bilder.length != 0) {
                 axios.post(config.BASE_URL + 'einsaetze', formData, {
                     onUploadProgress: progressEvent => {
-                        console.log(progressEvent.loaded / progressEvent.total)
+                        //console.log(progressEvent.loaded / progressEvent.total)
                         uploadEinsatz = progressEvent.loaded / progressEvent.total * 100
                         this.setState({uploadEinsatz: uploadEinsatz.toFixed(0), uploadEinsatzDisp: ""})
                     }
@@ -225,41 +225,8 @@ export default class Home extends React.Component {
             document.getElementById("errorEinsaetze").style.display = "inline";
             document.getElementById("successEinsaetze").style.display = "none";
         }
-
-/*
-        var {einsaetzeDatum, einsaetzeArt, einsaetzeText, einsaetzeUhrzeit} = this.state
-        var einsaetzeBilder = document.getElementsByName("einsaetzeBilder");
-        var einsaetzeFormat = document.getElementsByName("einsaetzeFormat");
-        var bilder = []
-        // for (var i = 0; i < einsaetzeBilder.length; i++) {
-        //     if (einsaetzeBilder[i].value != "") {
-        //        bilder.push(einsaetzeBilder[i].value + einsaetzeFormat[i].value)
-        //     }
-        //  }
-        //  if (einsaetzeDatum != "" && einsaetzeArt != "" && einsaetzeUhrzeit != "" && einsaetzeText != "" && bilder.length != 0) {
-        //this.props.dispatch(einsaetze(einsaetzeText, bilder.join(), einsaetzeDatum, einsaetzeUhrzeit, einsaetzeArt));
-        this.setState({
-            einsaetzeBilder: [],
-            einsaetzeDatum: dateFormat(date, "yyyy-mm-dd"),
-            einsaetzeFormat: ".jpg",
-            einsaetzeArt: "",
-            einsaetzeUhrzeit: "",
-            einsaetzeText: ""
-        })
-        // for (var i = 0; i < einsaetzeBilder.length; i++) {
-        console.log(einsaetzeBilder.length)
-        for (var i = 0; i < einsaetzeBilder.length; i++) {
-            einsaetzeBilder[i].value = ""
-            console.log(einsaetzeBilder[i].files)
-            //einsaetzeFormat[i].value = ".jpg"
-        }
-        document.getElementById("errorEinsaetze").style.display = "none";
-        document.getElementById("successEinsaetze").style.display = "inline";
-        //  } else {
-        //       document.getElementById("errorEinsaetze").style.display = "inline";
-        //      document.getElementById("successEinsaetze").style.display = "none";
-        //  } */
     }
+
     sendTermineFW = () => {
         var {termineFWDatum, termineFWLeiter, termineFWProbe, termineFWUhrzeit} = this.state
         if (termineFWDatum != "" && termineFWLeiter != "" && termineFWProbe != "" && termineFWUhrzeit != "") {
@@ -286,29 +253,6 @@ export default class Home extends React.Component {
     }
 
 
-    /*  onChange123 = (e) => {
-     console.log(e.target.files)
-     formData.append('username', 'Chris');
-     formData.append("aktuelles", e.target.files[0], "test.PNG");
-     console.log(formData);
-
-     } */
-
-    send() {
-
-        //  this.props.dispatch(aktuelles("", "", "", formData));
-
-        /*    var options = { content: formData };
-         HTTP.call( 'POST','http://localhost/aktuelles',options, function( error, response ) {
-         if ( error ) {console.log( error );}else{console.log(response)}});
-         */
-        /* const method = "POST";
-         const body = formData;
-         fetch("http://localhost/aktuelles", { method, body })
-         .then(res => res.json())
-         .then(data => alert(JSON.stringify(data, null, "\t")));
-         */
-    }
 
     render() {
         var {aktuellesBild, aktuellesDatum, aktuellesFormat, aktuellesText} = this.state

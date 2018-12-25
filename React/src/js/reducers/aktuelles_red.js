@@ -1,6 +1,6 @@
 export default function reducer(state={    // reducer schaut Komponenten an, die mit ihm verbunden sind
     aktuelles: {
-        text: "...",
+        text: "keine News vorhanden",
         bild: "platzhalter.jpg",
     },
     fetching: false,

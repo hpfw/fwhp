@@ -1,4 +1,4 @@
-export default function reducer(state={    // reducer schaut Komponenten an, die mit ihm verbunden sind
+export default function reducer(state = {    // reducer schaut Komponenten an, die mit ihm verbunden sind
     termine: {
         probe: "",
         datum: "",
@@ -11,24 +11,24 @@ export default function reducer(state={    // reducer schaut Komponenten an, die
     error: null,
 }, action) {
 
-switch (action.type) {
-case "FETCH_TERMINE_JF": {
-console.log("FETCH_TERMINE_JF");
-return {...state, fetching: true} // im fetching zustand daher true
-}
-case "FETCH_TERMINE_JF_REJECTED": {
-console.log("FETCH_TERMINE_JF_REJECTED");
-return {...state, fetching: false, error: action.payload}
-}
-case "FETCH_TERMINE_JF_FULFILLED": {  // ...state: state von oben: nimmt alle States von oben und ändert jene, die geändert werden sollen.
-return {                    // initR wurde nun neu gesetzt. Alle Komponenten, die verbunden sind, erfahren dies und rendern neu.
-...state,
-fetching: false,   // fetching false: Fertig
-fetched: true,     // fetched ist nun fertig
-termine: action.payload,
-}
-}
-}
+    switch (action.type) {
+        case "FETCH_TERMINE_JF": {
+            //console.log("FETCH_TERMINE_JF");
+            return {...state, fetching: true} // im fetching zustand daher true
+        }
+        case "FETCH_TERMINE_JF_REJECTED": {
+            //console.log("FETCH_TERMINE_JF_REJECTED");
+            return {...state, fetching: false, error: action.payload}
+        }
+        case "FETCH_TERMINE_JF_FULFILLED": {  // ...state: state von oben: nimmt alle States von oben und ändert jene, die geändert werden sollen.
+            return {                    // initR wurde nun neu gesetzt. Alle Komponenten, die verbunden sind, erfahren dies und rendern neu.
+                ...state,
+                fetching: false,   // fetching false: Fertig
+                fetched: true,     // fetched ist nun fertig
+                termine: action.payload,
+            }
+        }
+    }
 
-return state
+    return state
 }
