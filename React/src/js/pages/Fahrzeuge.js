@@ -34,7 +34,9 @@ export default class Fahrzeuge extends React.Component {
             <div class="fahrzeuge">
 
                 <div>
-                    <img src={"../../images/fahrzeuge/lf10/lf10ges.jpg"} width="100%" height="100%"/>
+
+
+                    <img src={"../images/fahrzeuge/lf10/lf10ges.jpg"} width="100%" height="100%"/>
                     <div id="fahrzeuge">LF10 - Funkrufname: Waldburg 42</div>
                     <div id="fahrzeugeTextKlein">MAN 12/250</div>
                     <div id="fahrzeugeTextKlein">Baujahr 2013</div>
@@ -70,7 +72,7 @@ export default class Fahrzeuge extends React.Component {
                 </div>
 
                 <div>
-                    <img src={"../../images/fahrzeuge/lf16/lf16ges.jpg"} width="100%" height="100%"/>
+                    <img src={"../images/fahrzeuge/lf16/lf16ges.jpg"} width="100%" height="100%"/>
                     <div id="fahrzeuge">LF16/12 - Funkrufname: Waldburg 44</div>
                     <div id="fahrzeugeTextKlein">Mercedes Benz 12/24</div>
                     <div id="fahrzeugeTextKlein">Baujahr 1997</div>
@@ -100,7 +102,7 @@ export default class Fahrzeuge extends React.Component {
                 </div>
 
                 <div>
-                    <img src={"../../images/fahrzeuge/mtw/mtwges.jpg"} width="100%" height="100%"/>
+                    <img src={"../images/fahrzeuge/mtw/mtwges.jpg"} width="100%" height="100%"/>
                     <div id="fahrzeuge">MTW - Funkrufname: Waldburg 19</div>
                     <div id="fahrzeugeTextKlein">Opel Movano 2,3 CDI</div>
                     <div id="fahrzeugeTextKlein">Baujahr 2016</div>
@@ -115,7 +117,7 @@ export default class Fahrzeuge extends React.Component {
                 </div>
 
                 <div>
-                    <img src={"../../images/fahrzeuge/anhaenger/anhaengerges.jpg"} width="100%" height="100%"/>
+                    <img src={"../images/fahrzeuge/anhaenger/anhaengerges.jpg"} width="100%" height="100%"/>
                     <div id="fahrzeuge">Anhänger</div>
                     <div id="fahrzeugeTextKlein">Fa. Voss</div>
                     <div id="fahrzeugeTextKlein">Baujahr 2008</div>
