@@ -1,5 +1,5 @@
 import React from "react";
-import '../style/style.css';
+import '../style/fahrzeuge.css';
 import {connect} from "react-redux"
 import {termineFW} from "../actions/termine_fw_action"
 import {termineJF} from "../actions/termine_jf_action"
@@ -32,28 +32,22 @@ export default class Fahrzeuge extends React.Component {
 
         return (
             <div class="fahrzeuge">
-                <img src={"../../images/waldburg1.jpg"} width="110%" height="110%"/>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
-                <div>asdasdasdasdsad</div>
+
+                <div>
+                    <div id="topFontContainer">LF10</div>
+                    <img src={"../../images/fahrzeuge/lf10/lf10ges.jpg"} width="100%" height="100%"/>
+                </div>
+
+                <div>
+                    <div id="fahrzeuge">LF16</div>
+                    <img src={"../../images/fahrzeuge/lf16/lf16ges.jpg"} width="100%" height="100%"/>
+                </div>
+
+                <div>
+                    <div id="fahrzeuge">MTW</div>
+                    <img src={"../../images/fahrzeuge/mtw/mtwges.jpg"} width="100%" height="100%"/>
+                </div>
+
             </div>
         );
     }

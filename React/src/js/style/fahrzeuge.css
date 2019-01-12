@@ -1,6 +1,13 @@
 
-.fahrzeuge {
-    font: 400 15px/1.8 Lato, sans-serif;
-    color: #FFFFFF;
+#fahrzeuge {
+    font: 400 30px/1.8 Lato, sans-serif;
+    color: #ff0000;
+    background-color: #777;
+}
 
+#topFontContainer {
+    font: 400 30px/1.8 Lato, sans-serif;
+    color: #ff0000;
+    margin-top: 50px;
+    background-color: #777;
 }
